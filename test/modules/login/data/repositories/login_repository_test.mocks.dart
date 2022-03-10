@@ -5,7 +5,7 @@
 import 'dart:async' as _i4;
 
 import 'package:mockito/mockito.dart' as _i1;
-import 'package:todo_app/modules/login/data/datasource/i_datasource.dart'
+import 'package:todo_app/modules/login/data/data_sources/i_datasource.dart'
     as _i3;
 import 'package:todo_app/modules/login/domain/entities/user.dart' as _i2;
 

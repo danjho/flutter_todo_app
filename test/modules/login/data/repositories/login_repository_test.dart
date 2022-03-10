@@ -2,10 +2,10 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
-import 'package:todo_app/modules/login/data/datasource/i_datasource.dart';
+import 'package:todo_app/modules/login/data/data_sources/i_datasource.dart';
 import 'package:todo_app/modules/login/data/repositories/login_repository.dart';
 import 'package:todo_app/modules/login/domain/entities/user.dart';
-import 'package:todo_app/shared/errors/errors.dart';
+import 'package:todo_app/core/errors/errors.dart';
 
 import 'login_repository_test.mocks.dart';
 

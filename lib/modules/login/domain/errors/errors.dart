@@ -1,5 +1,9 @@
-import 'package:todo_app/shared/errors/errors.dart';
+import 'package:todo_app/core/errors/errors.dart';
 
-class InvalidEmailFailure implements Failure {}
+class InvalidEmailError extends Failure {
+  InvalidEmailError({String? message}) : super(message: message);
+}
 
-class InvalidPasswordFailure implements Failure {}
+class InvalidPasswordError extends Failure {
+  InvalidPasswordError({String? message}) : super(message: message);
+}
