@@ -20,14 +20,14 @@ void main() {
 
   group('Validação de email', () {
     test('Retornar InvalidEmailFailure para email vazio', () async {
-      final result = await usecase(Params(email: '', password: 'any_password'));
+      final result = await usecase(Params(email: '', pwd: 'any_password'));
       expect(result.fold(id, id), isA<InvalidEmailFailure>());
     });
 
     test('Retornar InvalidEmailFailure para email fora do padrão', () async {
       final result = await usecase(Params(
         email: 'invalid_email',
-        password: 'any_password',
+        pwd: 'any_password',
       ));
       expect(result.fold(id, id), isA<InvalidEmailFailure>());
     });
@@ -35,14 +35,14 @@ void main() {
 
   group('Validação de password', () {
     test('Retornar InvalidPasswordFailure para password vazio', () async {
-      final result = await usecase(Params(email: email, password: ''));
+      final result = await usecase(Params(email: email, pwd: ''));
       expect(result.fold(id, id), isA<InvalidPasswordFailure>());
     });
 
     test(
       'Retornar InvalidPasswordFailure se o password não tiver a quantidade de caractere necessários',
       () async {
-        final result = await usecase(Params(email: email, password: 'any'));
+        final result = await usecase(Params(email: email, pwd: 'any'));
         expect(result.fold(id, id), isA<InvalidPasswordFailure>());
       },
     );
@@ -53,7 +53,7 @@ void main() {
       return Right(User(id: 'id', email: email));
     });
 
-    final result = await usecase(Params(email: email, password: password));
+    final result = await usecase(Params(email: email, pwd: password));
     expect(result.isRight(), true);
   });
 
@@ -62,7 +62,7 @@ void main() {
       throw RepositoryFailure();
     });
 
-    final result = await usecase(Params(email: email, password: password));
+    final result = await usecase(Params(email: email, pwd: password));
     expect(result.fold(id, id), isA<RepositoryFailure>());
   });
 }

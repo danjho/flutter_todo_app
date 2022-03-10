@@ -15,7 +15,7 @@ class LoginWithEmail extends UseCase<User, Params> {
   @override
   Future<Either<Failure, User>> call(Params params) async {
     final email = params.email;
-    final password = params.password;
+    final password = params.pwd;
 
     if (email.isEmpty || !email.isEmail) {
       return Left(InvalidEmailFailure());
@@ -34,10 +34,8 @@ class LoginWithEmail extends UseCase<User, Params> {
 }
 
 class Params {
-  Params({
-    required this.email,
-    required this.password,
-  });
+  Params({required this.email, required this.pwd});
+
   String email;
-  String password;
+  String pwd;
 }

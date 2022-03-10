@@ -33,8 +33,8 @@ class MockILoginRepository extends _i1.Mock implements _i3.ILoginRepository {
 
   @override
   _i4.Future<_i2.Either<_i5.Failure, _i6.User>> loginWithEmail(
-          String? email, String? password) =>
-      (super.noSuchMethod(Invocation.method(#loginWithEmail, [email, password]),
+          String? email, String? pwd) =>
+      (super.noSuchMethod(Invocation.method(#loginWithEmail, [email, pwd]),
               returnValue: Future<_i2.Either<_i5.Failure, _i6.User>>.value(
                   _FakeEither_0<_i5.Failure, _i6.User>()))
           as _i4.Future<_i2.Either<_i5.Failure, _i6.User>>);
