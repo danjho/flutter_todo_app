@@ -30,8 +30,8 @@ class MockILoginDatasource extends _i1.Mock implements _i3.ILoginDatasource {
   }
 
   @override
-  _i4.Future<_i2.User> loginWithEmail(String? email, String? password) =>
-      (super.noSuchMethod(Invocation.method(#loginWithEmail, [email, password]),
+  _i4.Future<_i2.User> loginWithEmail(String? email, String? pwd) =>
+      (super.noSuchMethod(Invocation.method(#loginWithEmail, [email, pwd]),
               returnValue: Future<_i2.User>.value(_FakeUser_0()))
           as _i4.Future<_i2.User>);
 }

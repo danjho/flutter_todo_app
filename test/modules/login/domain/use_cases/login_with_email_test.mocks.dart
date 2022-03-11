@@ -6,10 +6,10 @@ import 'dart:async' as _i4;
 
 import 'package:dartz/dartz.dart' as _i2;
 import 'package:mockito/mockito.dart' as _i1;
+import 'package:todo_app/core/errors/errors.dart' as _i5;
 import 'package:todo_app/modules/login/domain/entities/user.dart' as _i6;
 import 'package:todo_app/modules/login/domain/repositories/i_login_repository.dart'
     as _i3;
-import 'package:todo_app/core/errors/errors.dart' as _i5;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
