@@ -13,7 +13,7 @@ void main() {
 
   test('Deve retornar um usuário logado', () async {
     when(
-      dio.get(any),
+      dio.post(any),
     ).thenAnswer((_) async {
       return Response<Map<String, dynamic>>(
         requestOptions: RequestOptions(path: 'any_path'),
@@ -32,7 +32,7 @@ void main() {
   test(
     'Deve retornar um Exception caso haja erro na execução dio',
     () async {
-      when(dio.get(any)).thenThrow(Exception());
+      when(dio.post(any)).thenThrow(Exception());
       final result = dataSource.loginWithEmail('any_email', 'any_pwd');
       expect(result, throwsException);
     },

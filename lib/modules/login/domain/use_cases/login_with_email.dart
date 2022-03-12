@@ -1,21 +1,22 @@
 import 'package:dartz/dartz.dart';
 import 'package:get/get.dart';
-import 'package:todo_app/modules/login/domain/entities/user.dart';
-import 'package:todo_app/modules/login/domain/errors/errors.dart';
-import 'package:todo_app/modules/login/domain/repositories/i_login_repository.dart';
 import 'package:todo_app/core/errors/errors.dart';
 import 'package:todo_app/core/interfaces/use_case.dart';
 import 'package:todo_app/core/utils/constants.dart';
+import 'package:todo_app/modules/login/domain/dtos/login_dto.dart';
+import 'package:todo_app/modules/login/domain/entities/user.dart';
+import 'package:todo_app/modules/login/domain/errors/errors.dart';
+import 'package:todo_app/modules/login/domain/repositories/i_login_repository.dart';
 
-class LoginWithEmail extends UseCase<User, Params> {
+class LoginWithEmail extends UseCase<User, LoginDto> {
   LoginWithEmail({required this.repo});
 
   final ILoginRepository repo;
 
   @override
-  Future<Either<Failure, User>> call(Params params) async {
-    final email = params.email;
-    final password = params.pwd;
+  Future<Either<Failure, User>> call(LoginDto dto) async {
+    final email = dto.email;
+    final password = dto.pwd;
 
     if (email.isEmpty || !email.isEmail) {
       return Left(InvalidEmailError());
@@ -31,11 +32,4 @@ class LoginWithEmail extends UseCase<User, Params> {
       return Left(RepositoryError());
     }
   }
-}
-
-class Params {
-  Params({required this.email, required this.pwd});
-
-  String email;
-  String pwd;
 }

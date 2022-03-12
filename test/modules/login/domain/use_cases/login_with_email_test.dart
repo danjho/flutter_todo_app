@@ -2,11 +2,12 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
+import 'package:todo_app/core/errors/errors.dart';
+import 'package:todo_app/modules/login/domain/dtos/login_dto.dart';
 import 'package:todo_app/modules/login/domain/entities/user.dart';
 import 'package:todo_app/modules/login/domain/errors/errors.dart';
 import 'package:todo_app/modules/login/domain/repositories/i_login_repository.dart';
 import 'package:todo_app/modules/login/domain/use_cases/login_with_email.dart';
-import 'package:todo_app/core/errors/errors.dart';
 
 import 'login_with_email_test.mocks.dart';
 
@@ -20,12 +21,12 @@ void main() {
 
   group('Validação de email', () {
     test('Retornar InvalidEmailFailure para email vazio', () async {
-      final result = await usecase(Params(email: '', pwd: 'any_password'));
+      final result = await usecase(LoginDto(email: '', pwd: 'any_password'));
       expect(result.fold(id, id), isA<InvalidEmailError>());
     });
 
     test('Retornar InvalidEmailFailure para email fora do padrão', () async {
-      final result = await usecase(Params(
+      final result = await usecase(LoginDto(
         email: 'invalid_email',
         pwd: 'any_password',
       ));
@@ -35,14 +36,14 @@ void main() {
 
   group('Validação de password', () {
     test('Retornar InvalidPasswordFailure para password vazio', () async {
-      final result = await usecase(Params(email: email, pwd: ''));
+      final result = await usecase(LoginDto(email: email, pwd: ''));
       expect(result.fold(id, id), isA<InvalidPasswordError>());
     });
 
     test(
       'Retornar InvalidPasswordFailure se o password não tiver a quantidade de caractere necessários',
       () async {
-        final result = await usecase(Params(email: email, pwd: 'any'));
+        final result = await usecase(LoginDto(email: email, pwd: 'any'));
         expect(result.fold(id, id), isA<InvalidPasswordError>());
       },
     );
@@ -53,7 +54,7 @@ void main() {
       return Right(User(id: 'id', email: email));
     });
 
-    final result = await usecase(Params(email: email, pwd: password));
+    final result = await usecase(LoginDto(email: email, pwd: password));
     expect(result.isRight(), true);
   });
 
@@ -62,7 +63,7 @@ void main() {
       throw RepositoryError();
     });
 
-    final result = await usecase(Params(email: email, pwd: password));
+    final result = await usecase(LoginDto(email: email, pwd: password));
     expect(result.fold(id, id), isA<RepositoryError>());
   });
 }
