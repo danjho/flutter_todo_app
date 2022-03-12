@@ -7,6 +7,7 @@ import 'dart:async' as _i4;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:todo_app/modules/login/data/data_sources/i_datasource.dart'
     as _i3;
+import 'package:todo_app/modules/login/domain/dtos/login_dto.dart' as _i5;
 import 'package:todo_app/modules/login/domain/entities/user.dart' as _i2;
 
 // ignore_for_file: type=lint
@@ -30,8 +31,8 @@ class MockILoginDatasource extends _i1.Mock implements _i3.ILoginDatasource {
   }
 
   @override
-  _i4.Future<_i2.User> loginWithEmail(String? email, String? pwd) =>
-      (super.noSuchMethod(Invocation.method(#loginWithEmail, [email, pwd]),
+  _i4.Future<_i2.User> loginWithEmail(_i5.LoginDto? dto) =>
+      (super.noSuchMethod(Invocation.method(#loginWithEmail, [dto]),
               returnValue: Future<_i2.User>.value(_FakeUser_0()))
           as _i4.Future<_i2.User>);
 }

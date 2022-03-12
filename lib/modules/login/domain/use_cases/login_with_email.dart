@@ -27,7 +27,7 @@ class LoginWithEmail extends UseCase<User, LoginDto> {
     }
 
     try {
-      return repo.loginWithEmail(email, password);
+      return repo.loginWithEmail(dto);
     } catch (e) {
       return Left(RepositoryError());
     }

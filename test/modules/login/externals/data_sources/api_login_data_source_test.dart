@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
+import 'package:todo_app/modules/login/domain/dtos/login_dto.dart';
 import 'package:todo_app/modules/login/externals/data_sources/api_login_data_source.dart';
 
 import 'api_login_data_source_test.mocks.dart';
@@ -13,7 +14,7 @@ void main() {
 
   test('Deve retornar um usuário logado', () async {
     when(
-      dio.post(any),
+      dio.post(any, data: anyNamed('data')),
     ).thenAnswer((_) async {
       return Response<Map<String, dynamic>>(
         requestOptions: RequestOptions(path: 'any_path'),
@@ -25,15 +26,19 @@ void main() {
       );
     });
 
-    final user = await dataSource.loginWithEmail('any_email', 'any_pwd');
+    final user = await dataSource.loginWithEmail(
+      LoginDto(email: 'any_email', pwd: 'any_pwd'),
+    );
     expect(user.token, isNotEmpty);
   });
 
   test(
     'Deve retornar um Exception caso haja erro na execução dio',
     () async {
-      when(dio.post(any)).thenThrow(Exception());
-      final result = dataSource.loginWithEmail('any_email', 'any_pwd');
+      when(dio.post(any, data: anyNamed('data'))).thenThrow(Exception());
+      final result = dataSource.loginWithEmail(
+        LoginDto(email: 'any_email', pwd: 'any_pwd'),
+      );
       expect(result, throwsException);
     },
   );

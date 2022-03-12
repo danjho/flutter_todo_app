@@ -50,7 +50,7 @@ void main() {
   });
 
   test('Deve retornar um usuário logado', () async {
-    when(repo.loginWithEmail(any, any)).thenAnswer((_) async {
+    when(repo.loginWithEmail(any)).thenAnswer((_) async {
       return Right(User(id: 'id', email: email));
     });
 
@@ -59,7 +59,7 @@ void main() {
   });
 
   test('Deve retornar Failure em caso de falha no repositório', () async {
-    when(repo.loginWithEmail(any, any)).thenThrow((_) async {
+    when(repo.loginWithEmail(any)).thenThrow((_) async {
       throw RepositoryError();
     });
 

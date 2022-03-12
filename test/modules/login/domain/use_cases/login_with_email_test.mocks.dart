@@ -7,6 +7,7 @@ import 'dart:async' as _i4;
 import 'package:dartz/dartz.dart' as _i2;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:todo_app/core/errors/errors.dart' as _i5;
+import 'package:todo_app/modules/login/domain/dtos/login_dto.dart' as _i7;
 import 'package:todo_app/modules/login/domain/entities/user.dart' as _i6;
 import 'package:todo_app/modules/login/domain/repositories/i_login_repository.dart'
     as _i3;
@@ -33,8 +34,8 @@ class MockILoginRepository extends _i1.Mock implements _i3.ILoginRepository {
 
   @override
   _i4.Future<_i2.Either<_i5.Failure, _i6.User>> loginWithEmail(
-          String? email, String? pwd) =>
-      (super.noSuchMethod(Invocation.method(#loginWithEmail, [email, pwd]),
+          _i7.LoginDto? dto) =>
+      (super.noSuchMethod(Invocation.method(#loginWithEmail, [dto]),
               returnValue: Future<_i2.Either<_i5.Failure, _i6.User>>.value(
                   _FakeEither_0<_i5.Failure, _i6.User>()))
           as _i4.Future<_i2.Either<_i5.Failure, _i6.User>>);
