@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:todo_app/core/utils/validations/hex_color.dart';
+import 'package:todo_app/core/validations/hex_color.dart';
 
 void main() {
   test('Retornar null se a hexColor for válida', () async {
