@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:todo_app/core/utils/constants.dart';
 import 'package:todo_app/global_widgets/app_text_field.dart';
 import 'package:todo_app/modules/login/presenter/login_controller.dart';
+import 'package:todo_app/routes/app_routes.dart';
 
 class LoginPage extends GetView<LoginController> {
   const LoginPage({Key? key}) : super(key: key);
@@ -54,6 +55,11 @@ class LoginPage extends GetView<LoginController> {
                     ),
                   ],
                 ),
+              ),
+              const SizedBox(height: 64),
+              TextButton(
+                onPressed: () => Get.toNamed(AppRoutes.signUp),
+                child: Text('Cadastrar-se'),
               ),
             ],
           ),
