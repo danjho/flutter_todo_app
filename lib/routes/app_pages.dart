@@ -3,6 +3,8 @@ import 'package:todo_app/modules/home/ui/home_binding.dart';
 import 'package:todo_app/modules/home/ui/home_page.dart';
 import 'package:todo_app/modules/login/presenter/login_binding.dart';
 import 'package:todo_app/modules/login/presenter/login_page.dart';
+import 'package:todo_app/modules/sign_up/presenter/sign_up_binding.dart';
+import 'package:todo_app/modules/sign_up/presenter/sign_up_page.dart';
 import 'package:todo_app/routes/app_routes.dart';
 
 class AppPages {
@@ -18,6 +20,11 @@ class AppPages {
       name: AppRoutes.login,
       page: () => const LoginPage(),
       binding: LoginBinding(),
+    ),
+    GetPage(
+      name: AppRoutes.signUp,
+      page: () => const SignUpPage(),
+      binding: SignUpBinding(),
     ),
   ];
 }

@@ -2,7 +2,7 @@ import 'package:dartz/dartz.dart';
 
 import 'package:todo_app/core/errors/errors.dart';
 import 'package:todo_app/core/interfaces/use_case.dart';
-import 'package:todo_app/core/utils/validations/hex_color.dart';
+import 'package:todo_app/core/validations/hex_color.dart';
 import 'package:todo_app/modules/categories/domain/dtos/create_category_dto.dart';
 import 'package:todo_app/modules/categories/domain/entities/category.dart';
 import 'package:todo_app/modules/categories/domain/errors/erros.dart';
