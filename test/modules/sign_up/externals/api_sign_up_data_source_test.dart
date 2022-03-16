@@ -19,7 +19,7 @@ void main() {
   );
   test('Deve retornar um usuário do dataSource', () async {
     when(
-      dio.post(any),
+      dio.post(any, data: anyNamed('data')),
     ).thenAnswer((_) async {
       return Response<Map<String, dynamic>>(
         requestOptions: RequestOptions(path: 'any_path'),
@@ -36,7 +36,7 @@ void main() {
   });
 
   test('Deve retornar DataSourceError em caso de falha', () async {
-    when(dio.post(any)).thenThrow(Exception());
+    when(dio.post(any, data: anyNamed('data'))).thenThrow(Exception());
     final future = dataSource.signUpWithEmail(dto);
     expect(future, throwsException);
   });
