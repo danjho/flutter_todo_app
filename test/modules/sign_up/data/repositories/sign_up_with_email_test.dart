@@ -8,12 +8,17 @@ import 'package:todo_app/modules/sign_up/data/data_sources/i_sign_up_data_source
 import 'package:todo_app/modules/sign_up/data/repositories/sign_up_with_email_repository.dart';
 import 'package:todo_app/modules/sign_up/domain/dtos/sign_up_dto.dart';
 
+import '../../../login/data/repositories/login_repository_test.mocks.dart';
 import 'sign_up_with_email_test.mocks.dart';
 
 @GenerateMocks([ISignUpDataSource])
 void main() {
   final dataSource = MockISignUpDataSource();
-  final repo = SignUpWithEmailRepository(dataSource: dataSource);
+  final localDataSource = MockITokenLocalDataSource();
+  final repo = SignUpWithEmailRepository(
+    dataSource: dataSource,
+    localDataSource: localDataSource,
+  );
   test('Deve retornar um usuário logado', () async {
     when(dataSource.signUpWithEmail(any)).thenAnswer((_) async {
       return UserModel(id: 'id', email: 'valid@email.com', token: 'validToken');

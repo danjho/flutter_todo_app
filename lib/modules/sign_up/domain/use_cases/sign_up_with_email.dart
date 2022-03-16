@@ -31,7 +31,12 @@ class SignUpWithEmail extends UseCase<User, SignUpDto> {
       return Left(SignupInputError(message: 'Password inválido'));
     }
     try {
-      return repo.signUpWithEmail(dto);
+      final result = await repo.signUpWithEmail(dto);
+      if (result.isRight()) {
+        final user = result.foldRight(User, (r, previous) => r) as User;
+        repo.setToken(user.token ?? '');
+      }
+      return result;
     } catch (e) {
       return Left(RepositoryError());
     }

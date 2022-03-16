@@ -7,6 +7,8 @@ import 'dart:async' as _i4;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:todo_app/modules/login/data/data_sources/i_datasource.dart'
     as _i3;
+import 'package:todo_app/modules/login/data/data_sources/i_token_local_data_source.dart'
+    as _i6;
 import 'package:todo_app/modules/login/domain/dtos/login_dto.dart' as _i5;
 import 'package:todo_app/modules/login/domain/entities/user.dart' as _i2;
 
@@ -35,4 +37,24 @@ class MockILoginDatasource extends _i1.Mock implements _i3.ILoginDatasource {
       (super.noSuchMethod(Invocation.method(#loginWithEmail, [dto]),
               returnValue: Future<_i2.User>.value(_FakeUser_0()))
           as _i4.Future<_i2.User>);
+}
+
+/// A class which mocks [ITokenLocalDataSource].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockITokenLocalDataSource extends _i1.Mock
+    implements _i6.ITokenLocalDataSource {
+  MockITokenLocalDataSource() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  _i4.Future<void> setToken(String? token) =>
+      (super.noSuchMethod(Invocation.method(#setToken, [token]),
+          returnValue: Future<void>.value(),
+          returnValueForMissingStub: Future<void>.value()) as _i4.Future<void>);
+  @override
+  _i4.Future<String> getToken() =>
+      (super.noSuchMethod(Invocation.method(#getToken, []),
+          returnValue: Future<String>.value('')) as _i4.Future<String>);
 }

@@ -5,4 +5,6 @@ import 'package:todo_app/modules/sign_up/domain/dtos/sign_up_dto.dart';
 
 abstract class ISignUpRepository {
   Future<Either<Failure, User>> signUpWithEmail(SignUpDto dto);
+  Future<void> setToken(String token);
+  Future<String> getToken();
 }
