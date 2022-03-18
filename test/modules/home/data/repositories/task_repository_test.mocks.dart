@@ -7,7 +7,7 @@ import 'dart:async' as _i3;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:todo_app/modules/home/data/data_sources/i_task_data_source.dart'
     as _i2;
-import 'package:todo_app/modules/home/domain/entities/task.dart' as _i4;
+import 'package:todo_app/modules/home/data/models/task_model.dart' as _i4;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
@@ -28,8 +28,8 @@ class MockITaskDataSource extends _i1.Mock implements _i2.ITaskDataSource {
   }
 
   @override
-  _i3.Future<List<_i4.Task>> getAll() =>
+  _i3.Future<List<_i4.TaskModel>> getAll() =>
       (super.noSuchMethod(Invocation.method(#getAll, []),
-              returnValue: Future<List<_i4.Task>>.value(<_i4.Task>[]))
-          as _i3.Future<List<_i4.Task>>);
+              returnValue: Future<List<_i4.TaskModel>>.value(<_i4.TaskModel>[]))
+          as _i3.Future<List<_i4.TaskModel>>);
 }

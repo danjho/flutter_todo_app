@@ -4,4 +4,5 @@ class EndPoint {
 
   static const String login = '/auth/login';
   static const String signUp = '/auth/sign-up';
+  static const String tasks = '/me/tasks';
 }
