@@ -25,7 +25,7 @@ class SignUpWithEmailRepository extends ISignUpRepository {
   }
 
   @override
-  Future<String> getToken() {
+  Future<String?> getToken() {
     return localDataSource.getToken();
   }
 

@@ -5,7 +5,7 @@ class TokenSpDataSource extends ITokenLocalDataSource {
   final String key = 'token_key';
 
   @override
-  Future<String> getToken() async {
+  Future<String?> getToken() async {
     final prefs = await SharedPreferences.getInstance();
     return prefs.getString(key);
   }

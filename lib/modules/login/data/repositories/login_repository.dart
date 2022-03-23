@@ -23,7 +23,7 @@ class LoginRepository extends ILoginRepository {
   }
 
   @override
-  Future<String> getToken() {
+  Future<String?> getToken() {
     return localDataSource.getToken();
   }
 

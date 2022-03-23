@@ -54,7 +54,7 @@ class MockITokenLocalDataSource extends _i1.Mock
           returnValue: Future<void>.value(),
           returnValueForMissingStub: Future<void>.value()) as _i4.Future<void>);
   @override
-  _i4.Future<String> getToken() =>
+  _i4.Future<String?> getToken() =>
       (super.noSuchMethod(Invocation.method(#getToken, []),
-          returnValue: Future<String>.value('')) as _i4.Future<String>);
+          returnValue: Future<String?>.value()) as _i4.Future<String?>);
 }
