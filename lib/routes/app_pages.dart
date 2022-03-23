@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
-import 'package:todo_app/modules/home/ui/home_binding.dart';
-import 'package:todo_app/modules/home/ui/home_page.dart';
+import 'package:todo_app/modules/home/presenter/home_binding.dart';
+import 'package:todo_app/modules/home/presenter/home_page.dart';
 import 'package:todo_app/modules/login/presenter/login_binding.dart';
 import 'package:todo_app/modules/login/presenter/login_page.dart';
 import 'package:todo_app/modules/sign_up/presenter/sign_up_binding.dart';
