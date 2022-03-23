@@ -9,11 +9,12 @@ class TaskModel extends Task {
   }) : super(id: id, title: title, done: done, date: date);
 
   factory TaskModel.fromJson(Map<String, dynamic> map) {
+    print('');
     return TaskModel(
       id: map['id'] ?? '',
       title: map['title'] ?? '',
       done: map['done'] ?? false,
-      date: DateTime.fromMillisecondsSinceEpoch(map['date']),
+      date: DateTime.parse(map['date']),
     );
   }
 
@@ -26,6 +27,7 @@ class TaskModel extends Task {
     };
   }
 
-  static List<TaskModel> fromList(List list) =>
-      List<TaskModel>.from(list.map((x) => TaskModel.fromJson(x)));
+  static List<TaskModel> fromList(List list) {
+    return List<TaskModel>.from(list.map((e) => TaskModel.fromJson(e)));
+  }
 }
