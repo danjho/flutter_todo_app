@@ -1,13 +1,13 @@
 class Task {
   Task({
-    required this.id,
-    required this.title,
-    required this.done,
-    required this.date,
+    this.id,
+    this.title,
+    this.done,
+    this.date,
   });
 
-  String id;
-  String title;
-  bool done;
-  DateTime date;
+  String? id;
+  String? title;
+  bool? done;
+  DateTime? date;
 }

@@ -21,7 +21,7 @@ class HomePage extends GetView<HomeController> {
         return ListView(
           padding: EdgeInsets.all(DEFAULT_PADDING),
           children: controller.tasks.map((e) {
-            return ListTile(title: Text(e.title));
+            return ListTile(title: Text(e.title ?? ''));
           }).toList(),
         );
       }),

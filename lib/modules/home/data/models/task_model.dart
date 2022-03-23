@@ -23,7 +23,7 @@ class TaskModel extends Task {
       'id': id,
       'title': title,
       'done': done,
-      'date': date.millisecondsSinceEpoch,
+      'date': date?.millisecondsSinceEpoch,
     };
   }
 
