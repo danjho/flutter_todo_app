@@ -1,12 +1,15 @@
+import 'package:todo_app/core/validations/empty_fild_validation.dart';
+
 class NameValidation {
   NameValidation._();
 
   static String? validate(String? value) {
-    if (value!.isEmpty) {
-      return 'O nome não pode ser vazio';
+    String? result = EmptyFildValidation.validate('Nome', value);
+    if (result != null) {
+      return result;
     }
 
-    if (value.split(' ').length < 2) {
+    if (value!.split(' ').length < 2) {
       return 'Digite o nome e sobrenome';
     }
 

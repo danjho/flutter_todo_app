@@ -63,7 +63,9 @@ void main() {
   test(
     'Deve retornar RepositoryError em caso de falha no repositóro',
     () async {
-      when(repo.signUpWithEmail(any)).thenThrow(Exception);
+      when(repo.signUpWithEmail(any)).thenAnswer(
+        (_) async => Left(RepositoryError()),
+      );
       final result = await usecase(dto);
       expect(result.fold(id, id), isA<RepositoryError>());
     },

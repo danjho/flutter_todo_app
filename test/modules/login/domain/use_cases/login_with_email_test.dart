@@ -22,7 +22,7 @@ void main() {
   group('Validação de email', () {
     test('Retornar InvalidEmailFailure para email vazio', () async {
       final result = await usecase(LoginDto(email: '', pwd: 'any_password'));
-      expect(result.fold(id, id), isA<InvalidEmailError>());
+      expect(result.fold(id, id), isA<LoginWithEmailError>());
     });
 
     test('Retornar InvalidEmailFailure para email fora do padrão', () async {
@@ -30,21 +30,21 @@ void main() {
         email: 'invalid_email',
         pwd: 'any_password',
       ));
-      expect(result.fold(id, id), isA<InvalidEmailError>());
+      expect(result.fold(id, id), isA<LoginWithEmailError>());
     });
   });
 
   group('Validação de password', () {
     test('Retornar InvalidPasswordFailure para password vazio', () async {
       final result = await usecase(LoginDto(email: email, pwd: ''));
-      expect(result.fold(id, id), isA<InvalidPasswordError>());
+      expect(result.fold(id, id), isA<LoginWithEmailError>());
     });
 
     test(
       'Retornar InvalidPasswordFailure se o password não tiver a quantidade de caractere necessários',
       () async {
         final result = await usecase(LoginDto(email: email, pwd: 'any'));
-        expect(result.fold(id, id), isA<InvalidPasswordError>());
+        expect(result.fold(id, id), isA<LoginWithEmailError>());
       },
     );
   });
@@ -59,10 +59,8 @@ void main() {
   });
 
   test('Deve retornar Failure em caso de falha no repositório', () async {
-    when(repo.loginWithEmail(any)).thenThrow((_) async {
-      throw RepositoryError();
-    });
-
+    when(repo.loginWithEmail(any))
+        .thenAnswer((_) async => Left(RepositoryError()));
     final result = await usecase(LoginDto(email: email, pwd: password));
     expect(result.fold(id, id), isA<RepositoryError>());
   });

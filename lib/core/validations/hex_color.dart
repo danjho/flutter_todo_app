@@ -1,9 +1,12 @@
+import 'package:todo_app/core/validations/empty_fild_validation.dart';
+
 class HexColor {
   HexColor._();
 
   static String? validate(String value) {
-    if (value.isEmpty) {
-      return 'A cor não pode ser vazia';
+    String? result = EmptyFildValidation.validate('Cor', value);
+    if (result != null) {
+      return result;
     }
 
     final colorRegex = RegExp(r'^#(?:[0-9a-fA-F]{3}){1,2}$');

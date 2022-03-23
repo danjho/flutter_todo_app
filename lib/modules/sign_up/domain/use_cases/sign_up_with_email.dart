@@ -1,8 +1,9 @@
 import 'package:dartz/dartz.dart';
-import 'package:get/get.dart';
 import 'package:todo_app/core/errors/errors.dart';
 import 'package:todo_app/core/interfaces/use_case.dart';
-import 'package:todo_app/core/utils/constants.dart';
+import 'package:todo_app/core/validations/email_validation.dart';
+import 'package:todo_app/core/validations/name_validation.dart';
+import 'package:todo_app/core/validations/password_validation.dart';
 import 'package:todo_app/modules/login/domain/entities/user.dart';
 import 'package:todo_app/modules/sign_up/domain/dtos/sign_up_dto.dart';
 import 'package:todo_app/modules/sign_up/domain/errors/errors.dart';
@@ -15,30 +16,33 @@ class SignUpWithEmail extends UseCase<User, SignUpDto> {
 
   @override
   Future<Either<Failure, User>> call(SignUpDto dto) async {
-    if (dto.name.isEmpty) {
-      return Left(SignupInputError(message: 'Nome não pode ser vazio'));
-    }
-
-    if (dto.name.split(' ').length < 2) {
-      return Left(SignupInputError(message: 'Nome de ter pelo menos 2 partes'));
-    }
-
-    if (!dto.email.isEmail) {
-      return Left(SignupInputError(message: 'Email inválido'));
-    }
-
-    if (dto.pwd.length.isLowerThan(MIN_PASSWORD_LENGTH)) {
-      return Left(SignupInputError(message: 'Password inválido'));
-    }
     try {
-      final result = await repo.signUpWithEmail(dto);
-      if (result.isRight()) {
-        final user = result.foldRight(User, (r, previous) => r) as User;
-        repo.setToken(user.token ?? '');
-      }
-      return result;
+      _validateFields(dto);
+    } on SignupInputError catch (e) {
+      return Left(e);
     } catch (e) {
-      return Left(RepositoryError());
+      Left(SignupInputError(message: 'Erro inesperado'));
+    }
+
+    final result = await repo.signUpWithEmail(dto);
+    if (result.isRight()) {
+      final user = result.foldRight(User, (r, previous) => r) as User;
+      repo.setToken(user.token ?? '');
+    }
+    return result;
+  }
+
+  void _validateFields(SignUpDto dto) {
+    final validations = [
+      NameValidation.validate(dto.name),
+      EmailValidation.validate(dto.email),
+      PasswordValidation.validate(dto.pwd),
+    ];
+
+    for (final element in validations) {
+      if (element != null) {
+        throw SignupInputError(message: element);
+      }
     }
   }
 }
