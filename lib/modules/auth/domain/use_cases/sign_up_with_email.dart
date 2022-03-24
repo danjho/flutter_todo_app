@@ -24,12 +24,7 @@ class SignUpWithEmail extends UseCase<User, CreateUserDto> {
       Left(SignUpInputError(message: 'Erro inesperado'));
     }
 
-    final result = await repo.signUpWithEmail(dto);
-    if (result.isRight()) {
-      final user = result.foldRight(User, (r, previous) => r) as User;
-      repo.setToken(user.token ?? '');
-    }
-    return result;
+    return repo.signUpWithEmail(dto);
   }
 
   void _validateFields(CreateUserDto dto) {
