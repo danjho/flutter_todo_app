@@ -15,6 +15,10 @@ class CategoryModel extends Category {
     );
   }
 
+  static List<CategoryModel> fromList(List list) {
+    return List<CategoryModel>.from(list.map((x) => CategoryModel.fromJson(x)));
+  }
+
   Map<String, dynamic> toJsom() {
     return {
       'id': id,

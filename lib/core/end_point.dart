@@ -5,4 +5,5 @@ class EndPoint {
   static const String logIn = '/auth/login';
   static const String signUp = '/auth/sign-up';
   static const String tasks = '/me/tasks';
+  static const String categories = '/me/categories';
 }
