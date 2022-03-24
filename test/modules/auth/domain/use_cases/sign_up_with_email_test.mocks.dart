@@ -39,13 +39,4 @@ class MockISignUpRepository extends _i1.Mock implements _i3.ISignUpRepository {
               returnValue: Future<_i2.Either<_i5.Failure, _i6.User>>.value(
                   _FakeEither_0<_i5.Failure, _i6.User>()))
           as _i4.Future<_i2.Either<_i5.Failure, _i6.User>>);
-  @override
-  _i4.Future<void> setToken(String? token) =>
-      (super.noSuchMethod(Invocation.method(#setToken, [token]),
-          returnValue: Future<void>.value(),
-          returnValueForMissingStub: Future<void>.value()) as _i4.Future<void>);
-  @override
-  _i4.Future<String?> getToken() =>
-      (super.noSuchMethod(Invocation.method(#getToken, []),
-          returnValue: Future<String?>.value()) as _i4.Future<String?>);
 }

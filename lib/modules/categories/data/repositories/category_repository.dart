@@ -21,4 +21,10 @@ class CategoryRepository extends ICategoryRepository {
       return Left(RepositoryError());
     }
   }
+
+  @override
+  Future<Either<RepositoryError, List<Category>>> getAll() {
+    // TODO: implement getAll
+    throw UnimplementedError();
+  }
 }
