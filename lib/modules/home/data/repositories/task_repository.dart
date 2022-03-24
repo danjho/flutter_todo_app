@@ -3,7 +3,7 @@ import 'package:todo_app/modules/home/data/data_sources/i_task_data_source.dart'
 import 'package:todo_app/modules/home/domain/entities/task.dart' as app;
 import 'package:todo_app/core/errors/errors.dart';
 
-import 'package:dartz/dartz.dart';
+import 'package:dartz/dartz.dart' as d;
 import 'package:todo_app/modules/home/domain/repositories/i_task_repository.dart';
 
 class TaskRepository extends ITaskRepository {
@@ -11,18 +11,22 @@ class TaskRepository extends ITaskRepository {
 
   final ITaskDataSource dataSource;
   @override
-  Future<Either<RepositoryError, List<app.Task>>> getAll() async {
+  Future<d.Either<RepositoryError, List<app.Task>>> getAll() async {
     try {
       final tasks = await dataSource.getAll();
-      return Right(tasks);
+      return d.Right(tasks);
     } catch (e) {
-      return Left(RepositoryError());
+      return d.Left(RepositoryError());
     }
   }
 
   @override
-  Future<Either<RepositoryError, app.Task>> create(CreateTaskDto dto) {
-    // TODO: implement create
-    throw UnimplementedError();
+  Future<d.Either<RepositoryError, app.Task>> create(CreateTaskDto dto) async {
+    try {
+      final task = await dataSource.create(dto);
+      return d.Right(task);
+    } catch (e) {
+      return d.Left(RepositoryError());
+    }
   }
 }
