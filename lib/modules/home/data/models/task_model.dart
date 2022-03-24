@@ -9,12 +9,11 @@ class TaskModel extends Task {
   }) : super(id: id, title: title, done: done, date: date);
 
   factory TaskModel.fromJson(Map<String, dynamic> map) {
-    print('');
     return TaskModel(
       id: map['id'] ?? '',
       title: map['title'] ?? '',
       done: map['done'] ?? false,
-      date: DateTime.parse(map['date']),
+      date: DateTime.tryParse(map['date'] ?? '') ?? DateTime.now(),
     );
   }
 

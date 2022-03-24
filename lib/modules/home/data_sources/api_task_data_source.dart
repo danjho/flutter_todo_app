@@ -17,8 +17,8 @@ class ApiTaskDataSource extends ITaskDataSource {
   }
 
   @override
-  Future<Task> create(CreateTaskDto dto) {
-    // TODO: implement create
-    throw UnimplementedError();
+  Future<Task> create(CreateTaskDto dto) async {
+    final res = await dio.post(EndPoint.tasks, data: dto.toJson());
+    return TaskModel.fromJson(res.data);
   }
 }
