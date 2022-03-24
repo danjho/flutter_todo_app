@@ -15,7 +15,6 @@ class ApiLogInProvider implements ILogInProvider {
       EndPoint.logIn,
       data: dto.toMap(),
     );
-    // dio.updateInterceptors(res.data?['token']);
     return UserModel.fromJson(res.data?['user'])..token = res.data?['token'];
   }
 }
