@@ -14,4 +14,10 @@ class ApiCategoryProvider extends ICategoryProvider {
     final res = await dio.post(EndPoint.logIn, data: dto.toJson());
     return CategoryModel.fromJson(res.data);
   }
+
+  @override
+  Future<List<CategoryModel>> getAll() {
+    // TODO: implement getAll
+    throw UnimplementedError();
+  }
 }

@@ -23,8 +23,12 @@ class CategoryRepository extends ICategoryRepository {
   }
 
   @override
-  Future<Either<RepositoryError, List<Category>>> getAll() {
-    // TODO: implement getAll
-    throw UnimplementedError();
+  Future<Either<RepositoryError, List<Category>>> getAll() async {
+    try {
+      final categories = await categoryProvider.getAll();
+      return Right(categories);
+    } catch (e) {
+      return Left(RepositoryError(message: 'Erro inesperado'));
+    }
   }
 }

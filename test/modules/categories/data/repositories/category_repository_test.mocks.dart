@@ -38,4 +38,10 @@ class MockICategoryProvider extends _i1.Mock implements _i3.ICategoryProvider {
               returnValue:
                   Future<_i2.CategoryModel>.value(_FakeCategoryModel_0()))
           as _i4.Future<_i2.CategoryModel>);
+  @override
+  _i4.Future<List<_i2.CategoryModel>> getAll() =>
+      (super.noSuchMethod(Invocation.method(#getAll, []),
+              returnValue:
+                  Future<List<_i2.CategoryModel>>.value(<_i2.CategoryModel>[]))
+          as _i4.Future<List<_i2.CategoryModel>>);
 }

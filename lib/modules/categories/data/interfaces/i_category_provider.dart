@@ -3,4 +3,5 @@ import 'package:todo_app/modules/categories/domain/dtos/create_category_dto.dart
 
 abstract class ICategoryProvider {
   Future<CategoryModel> create(CreateCategoryDto dto);
+  Future<List<CategoryModel>> getAll();
 }

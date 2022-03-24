@@ -35,4 +35,17 @@ void main() {
     final result = await repo.create(dto);
     expect(result.fold(id, id), isA<RepositoryError>());
   });
+
+  test('Deve retornar uma lista de categorias', () async {
+    when(categoryProvider.getAll()).thenAnswer((_) async => <CategoryModel>[]);
+    final result = await repo.getAll();
+    expect(result.fold(id, id), isA<List<CategoryModel>>());
+  });
+
+  test('Deve retornar um RepositoryError se falhar ao buscar categorias',
+      () async {
+    when(categoryProvider.getAll()).thenThrow(Exception());
+    final result = await repo.getAll();
+    expect(result.fold(id, id), isA<RepositoryError>());
+  });
 }
