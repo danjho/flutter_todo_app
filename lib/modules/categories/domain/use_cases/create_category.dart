@@ -6,7 +6,7 @@ import 'package:todo_app/core/validations/hex_color.dart';
 import 'package:todo_app/modules/categories/domain/dtos/create_category_dto.dart';
 import 'package:todo_app/modules/categories/domain/entities/category.dart';
 import 'package:todo_app/modules/categories/domain/errors/erros.dart';
-import 'package:todo_app/modules/categories/domain/repositories/i_category_repository.dart';
+import 'package:todo_app/modules/categories/domain/interfaces/i_category_repository.dart';
 
 class CreateCategory extends UseCase<Category, CreateCategoryDto> {
   CreateCategory({required this.repo});

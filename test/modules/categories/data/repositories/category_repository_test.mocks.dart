@@ -5,7 +5,7 @@
 import 'dart:async' as _i4;
 
 import 'package:mockito/mockito.dart' as _i1;
-import 'package:todo_app/modules/categories/data/data_sources/i_category_data_source.dart'
+import 'package:todo_app/modules/categories/data/interfaces/i_category_provider.dart'
     as _i3;
 import 'package:todo_app/modules/categories/data/models/category_model.dart'
     as _i2;
@@ -24,12 +24,11 @@ import 'package:todo_app/modules/categories/domain/dtos/create_category_dto.dart
 
 class _FakeCategoryModel_0 extends _i1.Fake implements _i2.CategoryModel {}
 
-/// A class which mocks [ICategoryDataSource].
+/// A class which mocks [ICategoryProvider].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockICategoryDataSource extends _i1.Mock
-    implements _i3.ICategoryDataSource {
-  MockICategoryDataSource() {
+class MockICategoryProvider extends _i1.Mock implements _i3.ICategoryProvider {
+  MockICategoryProvider() {
     _i1.throwOnMissingStub(this);
   }
 

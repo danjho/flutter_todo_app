@@ -11,7 +11,7 @@ import 'package:todo_app/modules/categories/domain/dtos/create_category_dto.dart
     as _i7;
 import 'package:todo_app/modules/categories/domain/entities/category.dart'
     as _i6;
-import 'package:todo_app/modules/categories/domain/repositories/i_category_repository.dart'
+import 'package:todo_app/modules/categories/domain/interfaces/i_category_repository.dart'
     as _i3;
 
 // ignore_for_file: type=lint

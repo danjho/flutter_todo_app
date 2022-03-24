@@ -13,7 +13,7 @@ Future<void> main() async {
     title: 'Flutter ToDo App',
     debugShowCheckedModeBanner: false,
     theme: AppTheme.light,
-    initialRoute: AppRoutes.login,
+    initialRoute: AppRoutes.logIn,
     initialBinding: AppBinding(),
     getPages: AppPages.pages,
     locale: const Locale('pt', 'BR'),

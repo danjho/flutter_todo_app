@@ -1,10 +1,10 @@
 import 'package:get/get.dart';
-import 'package:todo_app/modules/home/presenter/home_binding.dart';
-import 'package:todo_app/modules/home/presenter/home_page.dart';
-import 'package:todo_app/modules/login/presenter/login_binding.dart';
-import 'package:todo_app/modules/login/presenter/login_page.dart';
-import 'package:todo_app/modules/sign_up/presenter/sign_up_binding.dart';
-import 'package:todo_app/modules/sign_up/presenter/sign_up_page.dart';
+import 'package:todo_app/modules/auth/presenter/log_in/log_in_binding.dart';
+import 'package:todo_app/modules/auth/presenter/log_in/log_in_page.dart';
+import 'package:todo_app/modules/auth/presenter/sign_up/sign_up_binding.dart';
+import 'package:todo_app/modules/auth/presenter/sign_up/sign_up_page.dart';
+import 'package:todo_app/modules/tasks/presenter/home/home_binding.dart';
+import 'package:todo_app/modules/tasks/presenter/home/home_page.dart';
 import 'package:todo_app/routes/app_routes.dart';
 
 class AppPages {
@@ -17,9 +17,9 @@ class AppPages {
       binding: HomeBinding(),
     ),
     GetPage(
-      name: AppRoutes.login,
-      page: () => const LoginPage(),
-      binding: LoginBinding(),
+      name: AppRoutes.logIn,
+      page: () => const LogInPage(),
+      binding: LogInBinding(),
     ),
     GetPage(
       name: AppRoutes.signUp,
