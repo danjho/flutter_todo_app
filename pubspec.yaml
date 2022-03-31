@@ -38,6 +38,8 @@ dependencies:
   dio: 4.0.4
   flutter_dotenv: 5.0.2
   get: 4.6.1
+  hexcolor: 2.0.6
+  percent_indicator: 4.0.0
   shared_preferences: 2.0.13
 
 dev_dependencies:
