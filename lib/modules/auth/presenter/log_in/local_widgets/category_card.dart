@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 import 'package:todo_app/core/utils/constants.dart';
-import 'package:todo_app/modules/categories/data/models/category_model.dart';
+import 'package:todo_app/modules/categories/domain/entities/category.dart';
 import 'package:todo_app/modules/tasks/data/models/task_model.dart';
 
 class CategoryCard extends StatelessWidget {
@@ -12,7 +12,7 @@ class CategoryCard extends StatelessWidget {
     Key? key,
   }) : super(key: key);
 
-  final CategoryModel category;
+  final Category category;
   final Function(TaskModel task)? onTap;
   final double radius = 10;
 
