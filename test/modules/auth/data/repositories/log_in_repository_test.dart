@@ -26,7 +26,7 @@ void main() {
 
   test('Deve retornar um usuário logado', () async {
     when(logInProvider.logInWithEmail(any)).thenAnswer((_) async {
-      return User(id: 'id', email: 'email', token: 'token');
+      return User(id: 'id', email: 'email', token: 'token', name: 'name');
     });
 
     final result = await useCase.logInWithEmail(

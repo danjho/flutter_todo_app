@@ -29,13 +29,13 @@ class TaskCard extends StatelessWidget {
         onTap: () => onTap?.call(task),
         child: Row(
           children: [
-            TaskCheckBox(value: task.done ?? false),
+            TaskCheckBox(value: task.done),
             const SizedBox(width: DEFAULT_PADDING),
             Text(
-              task.title ?? '',
+              task.title,
               style: Get.textTheme.bodyMedium?.copyWith(
                 color: Colors.black,
-                decoration: (task.done ?? false)
+                decoration: (task.done)
                     ? TextDecoration.lineThrough
                     : TextDecoration.none,
               ),

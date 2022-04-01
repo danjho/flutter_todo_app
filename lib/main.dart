@@ -6,7 +6,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get.dart';
 import 'package:todo_app/app_binding.dart';
 import 'package:todo_app/app_globals.dart';
-import 'package:todo_app/modules/auth/data/models/user_model.dart';
+import 'package:todo_app/modules/auth/domain/entities/user.dart';
 import 'package:todo_app/modules/auth/providers/sp_token_provider.dart';
 import 'package:todo_app/modules/auth/providers/sp_user_provider.dart';
 import 'package:todo_app/routes/app_pages.dart';
@@ -18,13 +18,13 @@ Future<void> main() async {
 
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
 
-  AppGlobals.token = await SpTokenProvider().getToken();
+  AppGlobals.token = await SpTokenProvider().getToken() ?? '';
   final userJson = await SpUserProvider().getUser();
   if (userJson != null) {
-    AppGlobals.user = UserModel.fromJson(json.decode(userJson));
+    AppGlobals.user = User.fromJson(json.decode(userJson));
   }
 
-  final isLoggedIn = AppGlobals.token != null && AppGlobals.user != null;
+  final isLoggedIn = AppGlobals.token.isNotEmpty && AppGlobals.user != null;
 
   final app = GetMaterialApp(
     title: 'Flutter ToDo App',

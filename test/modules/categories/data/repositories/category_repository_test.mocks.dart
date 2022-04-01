@@ -7,10 +7,10 @@ import 'dart:async' as _i4;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:todo_app/modules/categories/data/interfaces/i_category_provider.dart'
     as _i3;
-import 'package:todo_app/modules/categories/data/models/category_model.dart'
-    as _i2;
 import 'package:todo_app/modules/categories/domain/dtos/create_category_dto.dart'
     as _i5;
+import 'package:todo_app/modules/categories/domain/entities/category.dart'
+    as _i2;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
@@ -22,7 +22,7 @@ import 'package:todo_app/modules/categories/domain/dtos/create_category_dto.dart
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: camel_case_types
 
-class _FakeCategoryModel_0 extends _i1.Fake implements _i2.CategoryModel {}
+class _FakeCategory_0 extends _i1.Fake implements _i2.Category {}
 
 /// A class which mocks [ICategoryProvider].
 ///
@@ -33,15 +33,13 @@ class MockICategoryProvider extends _i1.Mock implements _i3.ICategoryProvider {
   }
 
   @override
-  _i4.Future<_i2.CategoryModel> create(_i5.CreateCategoryDto? dto) =>
+  _i4.Future<_i2.Category> create(_i5.CreateCategoryDto? dto) =>
       (super.noSuchMethod(Invocation.method(#create, [dto]),
-              returnValue:
-                  Future<_i2.CategoryModel>.value(_FakeCategoryModel_0()))
-          as _i4.Future<_i2.CategoryModel>);
+              returnValue: Future<_i2.Category>.value(_FakeCategory_0()))
+          as _i4.Future<_i2.Category>);
   @override
-  _i4.Future<List<_i2.CategoryModel>> getAll() =>
+  _i4.Future<List<_i2.Category>> getAll() =>
       (super.noSuchMethod(Invocation.method(#getAll, []),
-              returnValue:
-                  Future<List<_i2.CategoryModel>>.value(<_i2.CategoryModel>[]))
-          as _i4.Future<List<_i2.CategoryModel>>);
+              returnValue: Future<List<_i2.Category>>.value(<_i2.Category>[]))
+          as _i4.Future<List<_i2.Category>>);
 }

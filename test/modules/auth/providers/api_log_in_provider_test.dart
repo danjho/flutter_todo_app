@@ -20,7 +20,7 @@ void main() {
         requestOptions: RequestOptions(path: 'any_path'),
         statusCode: 200,
         data: {
-          'user': {'id': 'uuid', 'email': 'user@email.com'},
+          'user': {'id': 'uuid', 'email': 'user@email.com', 'name': 'name'},
           'token': 'validToken',
         },
       );

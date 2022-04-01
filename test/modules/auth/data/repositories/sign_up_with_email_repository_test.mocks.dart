@@ -11,8 +11,8 @@ import 'package:todo_app/modules/auth/data/interfaces/i_token_provider.dart'
     as _i6;
 import 'package:todo_app/modules/auth/data/interfaces/i_user_provider.dart'
     as _i7;
-import 'package:todo_app/modules/auth/data/models/user_model.dart' as _i2;
 import 'package:todo_app/modules/auth/domain/dtos/create_user_dto.dart' as _i5;
+import 'package:todo_app/modules/auth/domain/entities/user.dart' as _i2;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
@@ -24,7 +24,7 @@ import 'package:todo_app/modules/auth/domain/dtos/create_user_dto.dart' as _i5;
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: camel_case_types
 
-class _FakeUserModel_0 extends _i1.Fake implements _i2.UserModel {}
+class _FakeUser_0 extends _i1.Fake implements _i2.User {}
 
 /// A class which mocks [ISignUpProvider].
 ///
@@ -35,10 +35,10 @@ class MockISignUpProvider extends _i1.Mock implements _i3.ISignUpProvider {
   }
 
   @override
-  _i4.Future<_i2.UserModel> signUpWithEmail(_i5.CreateUserDto? dto) =>
+  _i4.Future<_i2.User> signUpWithEmail(_i5.CreateUserDto? dto) =>
       (super.noSuchMethod(Invocation.method(#signUpWithEmail, [dto]),
-              returnValue: Future<_i2.UserModel>.value(_FakeUserModel_0()))
-          as _i4.Future<_i2.UserModel>);
+              returnValue: Future<_i2.User>.value(_FakeUser_0()))
+          as _i4.Future<_i2.User>);
 }
 
 /// A class which mocks [ITokenProvider].

@@ -7,8 +7,7 @@ import 'dart:async' as _i4;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:todo_app/modules/tasks/data/interfaces/i_task_provider.dart'
     as _i3;
-import 'package:todo_app/modules/tasks/data/models/task_model.dart' as _i5;
-import 'package:todo_app/modules/tasks/domain/dtos/create_task_dto.dart' as _i6;
+import 'package:todo_app/modules/tasks/domain/dtos/create_task_dto.dart' as _i5;
 import 'package:todo_app/modules/tasks/domain/entities/task.dart' as _i2;
 
 // ignore_for_file: type=lint
@@ -32,12 +31,12 @@ class MockITaskProvider extends _i1.Mock implements _i3.ITaskProvider {
   }
 
   @override
-  _i4.Future<List<_i5.TaskModel>> getAll() =>
+  _i4.Future<List<_i2.Task>> getAll() =>
       (super.noSuchMethod(Invocation.method(#getAll, []),
-              returnValue: Future<List<_i5.TaskModel>>.value(<_i5.TaskModel>[]))
-          as _i4.Future<List<_i5.TaskModel>>);
+              returnValue: Future<List<_i2.Task>>.value(<_i2.Task>[]))
+          as _i4.Future<List<_i2.Task>>);
   @override
-  _i4.Future<_i2.Task> create(_i6.CreateTaskDto? dto) =>
+  _i4.Future<_i2.Task> create(_i5.CreateTaskDto? dto) =>
       (super.noSuchMethod(Invocation.method(#create, [dto]),
               returnValue: Future<_i2.Task>.value(_FakeTask_0()))
           as _i4.Future<_i2.Task>);

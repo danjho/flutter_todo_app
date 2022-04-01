@@ -30,8 +30,8 @@ class SignUpWithEmailRepository extends ISignUpRepository {
       AppGlobals.token = loggedUser.token;
       AppGlobals.user = loggedUser;
 
-      tokenProvider.setToken(loggedUser.token ?? '');
-      userProvider.setUser(loggedUser.toJson());
+      tokenProvider.setToken(loggedUser.token);
+      userProvider.setUser(loggedUser.toJson().toString());
       Get.find<Dio>().updateInterceptors(loggedUser.token);
 
       return Right(loggedUser);

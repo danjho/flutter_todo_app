@@ -3,7 +3,7 @@ import 'package:hexcolor/hexcolor.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 import 'package:todo_app/core/utils/constants.dart';
 import 'package:todo_app/modules/categories/domain/entities/category.dart';
-import 'package:todo_app/modules/tasks/data/models/task_model.dart';
+import 'package:todo_app/modules/tasks/domain/entities/task.dart';
 
 class CategoryCard extends StatelessWidget {
   const CategoryCard({
@@ -13,13 +13,13 @@ class CategoryCard extends StatelessWidget {
   }) : super(key: key);
 
   final Category category;
-  final Function(TaskModel task)? onTap;
+  final Function(Task task)? onTap;
   final double radius = 10;
 
   @override
   Widget build(BuildContext context) {
     final totalTasks = category.tasks.length;
-    final doneTasks = category.tasks.where((e) => e.done ?? false).length;
+    final doneTasks = category.tasks.where((e) => e.done).length;
     return Card(
       margin: EdgeInsets.all(DEFAULT_PADDING / 2),
       shape: RoundedRectangleBorder(

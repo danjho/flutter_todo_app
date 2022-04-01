@@ -4,7 +4,6 @@ import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:todo_app/core/errors/errors.dart';
 import 'package:todo_app/modules/tasks/data/interfaces/i_task_provider.dart';
-import 'package:todo_app/modules/tasks/data/models/task_model.dart';
 import 'package:todo_app/modules/tasks/data/repositories/task_repository.dart';
 import 'package:todo_app/modules/tasks/domain/dtos/create_task_dto.dart';
 import 'package:todo_app/modules/tasks/domain/entities/task.dart' as e;
@@ -18,7 +17,7 @@ void main() {
 
   test('Deve retornar uma lista de tarefas', () async {
     when(taskProvider.getAll()).thenAnswer((_) async {
-      return <TaskModel>[];
+      return <e.Task>[];
     });
     final result = await repo.getAll();
     expect(result.isRight(), true);

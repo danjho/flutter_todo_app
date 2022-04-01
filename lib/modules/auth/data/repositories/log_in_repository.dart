@@ -30,8 +30,8 @@ class LogInRepository extends ILogInRepository {
       AppGlobals.token = user.token;
       AppGlobals.user = user;
 
-      tokenProvider.setToken(user.token ?? '');
-      userProvider.setUser(user.toJson());
+      tokenProvider.setToken(user.token);
+      userProvider.setUser(user.toJson().toString());
       Get.find<Dio>().updateInterceptors(user.token);
 
       return Right(user);
