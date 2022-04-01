@@ -44,7 +44,8 @@ void main() {
 
   test('Deve retornar uma Categoria criada com sucesso', () async {
     when(repo.create(any)).thenAnswer((_) async {
-      return Right(Category(id: 'uuid', name: 'name', color: '#FFFFFF'));
+      return Right(
+          Category(id: 'uuid', name: 'name', color: '#FFFFFF', tasks: []));
     });
 
     final result = await usecase(dto);

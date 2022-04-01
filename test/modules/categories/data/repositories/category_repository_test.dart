@@ -22,7 +22,8 @@ void main() {
   });
   test('Deve criar uma categoria', () async {
     when(categoryProvider.create(any)).thenAnswer((_) async {
-      return CategoryModel(id: 'uuid', name: 'name', color: '#AABBCC');
+      return CategoryModel(
+          id: 'uuid', name: 'name', color: '#AABBCC', tasks: []);
     });
     final result = await repo.create(dto);
     final fold = result.fold(id, id);
