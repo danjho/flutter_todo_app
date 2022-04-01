@@ -1,3 +1,4 @@
+import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:todo_app/core/utils/constants.dart';
@@ -22,7 +23,7 @@ class LogInController extends GetxController {
         return;
       }
 
-      Get.offAllNamed(AppRoutes.home);
+      Get.offAllNamed(AppRoutes.home, arguments: result.fold(id, id));
     }
   }
 

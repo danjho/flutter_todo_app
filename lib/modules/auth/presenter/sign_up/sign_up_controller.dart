@@ -1,3 +1,4 @@
+import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:todo_app/core/validations/password_validation.dart';
@@ -27,7 +28,7 @@ class SignUpController extends GetxController {
     if (formKey.currentState!.validate()) {
       final result = await repo.signUpWithEmail(dto);
       if (result.isRight()) {
-        Get.offAllNamed(AppRoutes.home);
+        Get.offAllNamed(AppRoutes.home, arguments: result.fold(id, id));
       }
     }
   }
