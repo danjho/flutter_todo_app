@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get.dart';
 import 'package:todo_app/app_binding.dart';
@@ -8,6 +9,8 @@ import 'package:todo_app/themes/app_theme.dart';
 
 Future<void> main() async {
   await dotenv.load(fileName: '.env');
+
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
 
   final app = GetMaterialApp(
     title: 'Flutter ToDo App',
