@@ -56,7 +56,7 @@ class HomePage extends GetView<HomeController> {
         horizontal: horizontalPadding,
       ),
       child: Text(
-        'Bem-vindo, ${controller.user.name!.split(' ')[0]}',
+        'Bem-vindo, ${controller.user?.name!.split(' ')[0]}',
         style: Get.textTheme.titleLarge?.copyWith(
           color: AppColors.welcomeTextColor,
           fontWeight: FontWeight.bold,

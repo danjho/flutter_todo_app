@@ -31,12 +31,16 @@ void main() {
     expect(future, throwsException);
   });
 
-  test('Deve retornar uma lista de Categorias', () async {
-    when(dio.get(any)).thenAnswer((_) async =>
-        Response(requestOptions: RequestOptions(path: 'any'), data: []));
-    final result = await apiCategoryProvider.getAll();
-    expect(result, isA<List<CategoryModel>>());
-  });
+  test(
+    'Deve retornar uma lista de Categorias',
+    () async {
+      when(dio.get(any, queryParameters: anyNamed('queryParameters')))
+          .thenAnswer((_) async =>
+              Response(requestOptions: RequestOptions(path: 'any'), data: []));
+      final result = await apiCategoryProvider.getAll();
+      expect(result, isA<List<CategoryModel>>());
+    },
+  );
 
   test('Deve retornar uma Exception se der erro ao tentar buscas categorias',
       () async {

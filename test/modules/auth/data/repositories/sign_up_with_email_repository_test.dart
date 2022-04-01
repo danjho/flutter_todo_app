@@ -4,20 +4,24 @@ import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:todo_app/core/errors/errors.dart';
 import 'package:todo_app/modules/auth/data/interfaces/i_sign_up_provider.dart';
+import 'package:todo_app/modules/auth/data/interfaces/i_token_provider.dart';
+import 'package:todo_app/modules/auth/data/interfaces/i_user_provider.dart';
 import 'package:todo_app/modules/auth/data/models/user_model.dart';
 import 'package:todo_app/modules/auth/data/repositories/sign_up_with_email_repository.dart';
 import 'package:todo_app/modules/auth/domain/dtos/create_user_dto.dart';
 
-import 'log_in_repository_test.mocks.dart';
 import 'sign_up_with_email_repository_test.mocks.dart';
 
-@GenerateMocks([ISignUpProvider])
+@GenerateMocks([ISignUpProvider, ITokenProvider, IUserProvider])
 void main() {
   final signUpProvider = MockISignUpProvider();
   final tokenProvider = MockITokenProvider();
+  final userProvider = MockIUserProvider();
+
   final repo = SignUpWithEmailRepository(
     signUpProvider: signUpProvider,
     tokenProvider: tokenProvider,
+    userProvider: userProvider,
   );
   test('Deve retornar um usuário logado', () async {
     when(signUpProvider.signUpWithEmail(any)).thenAnswer((_) async {

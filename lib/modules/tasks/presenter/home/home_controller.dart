@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
-import 'package:todo_app/modules/auth/data/models/user_model.dart';
+import 'package:todo_app/app_globals.dart';
+import 'package:todo_app/modules/auth/domain/entities/user.dart';
 import 'package:todo_app/modules/categories/data/repositories/category_repository.dart';
 import 'package:todo_app/modules/categories/domain/entities/category.dart';
 import 'package:todo_app/modules/categories/domain/use_cases/get_all_categories.dart';
@@ -21,7 +22,7 @@ class HomeController extends GetxController {
 
   List<Task> tasks = [];
   List<Category> categories = [];
-  late UserModel user;
+  User? get user => AppGlobals.user;
 
   HomeState get state => _state();
 
@@ -30,8 +31,6 @@ class HomeController extends GetxController {
 
   @override
   Future<void> onReady() async {
-    user = Get.arguments;
-
     final getAllCategories = GetAllCategories(repo: categoryRepo);
     final catResult = await getAllCategories();
     if (catResult.isRight()) {

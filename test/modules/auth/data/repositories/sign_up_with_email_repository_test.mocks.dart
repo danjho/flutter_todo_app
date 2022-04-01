@@ -7,6 +7,10 @@ import 'dart:async' as _i4;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:todo_app/modules/auth/data/interfaces/i_sign_up_provider.dart'
     as _i3;
+import 'package:todo_app/modules/auth/data/interfaces/i_token_provider.dart'
+    as _i6;
+import 'package:todo_app/modules/auth/data/interfaces/i_user_provider.dart'
+    as _i7;
 import 'package:todo_app/modules/auth/data/models/user_model.dart' as _i2;
 import 'package:todo_app/modules/auth/domain/dtos/create_user_dto.dart' as _i5;
 
@@ -35,4 +39,42 @@ class MockISignUpProvider extends _i1.Mock implements _i3.ISignUpProvider {
       (super.noSuchMethod(Invocation.method(#signUpWithEmail, [dto]),
               returnValue: Future<_i2.UserModel>.value(_FakeUserModel_0()))
           as _i4.Future<_i2.UserModel>);
+}
+
+/// A class which mocks [ITokenProvider].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockITokenProvider extends _i1.Mock implements _i6.ITokenProvider {
+  MockITokenProvider() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  _i4.Future<void> setToken(String? token) =>
+      (super.noSuchMethod(Invocation.method(#setToken, [token]),
+          returnValue: Future<void>.value(),
+          returnValueForMissingStub: Future<void>.value()) as _i4.Future<void>);
+  @override
+  _i4.Future<String?> getToken() =>
+      (super.noSuchMethod(Invocation.method(#getToken, []),
+          returnValue: Future<String?>.value()) as _i4.Future<String?>);
+}
+
+/// A class which mocks [IUserProvider].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockIUserProvider extends _i1.Mock implements _i7.IUserProvider {
+  MockIUserProvider() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  _i4.Future<void> setUser(String? json) =>
+      (super.noSuchMethod(Invocation.method(#setUser, [json]),
+          returnValue: Future<void>.value(),
+          returnValueForMissingStub: Future<void>.value()) as _i4.Future<void>);
+  @override
+  _i4.Future<String?> getUser() =>
+      (super.noSuchMethod(Invocation.method(#getUser, []),
+          returnValue: Future<String?>.value()) as _i4.Future<String?>);
 }

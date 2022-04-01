@@ -19,11 +19,4 @@ class UserModel extends User {
         token: json['token'],
         name: json['name'],
       );
-
-  Map<String, dynamic> toJson() => {
-        'id': id,
-        'email': email,
-        'token': token,
-        'name': name,
-      };
 }

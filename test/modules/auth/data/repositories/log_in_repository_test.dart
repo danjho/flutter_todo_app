@@ -5,19 +5,23 @@ import 'package:mockito/mockito.dart';
 import 'package:todo_app/core/errors/errors.dart';
 import 'package:todo_app/modules/auth/data/interfaces/i_log_in_provider.dart';
 import 'package:todo_app/modules/auth/data/interfaces/i_token_provider.dart';
+import 'package:todo_app/modules/auth/data/interfaces/i_user_provider.dart';
 import 'package:todo_app/modules/auth/data/repositories/log_in_repository.dart';
 import 'package:todo_app/modules/auth/domain/dtos/log_in_dto.dart';
 import 'package:todo_app/modules/auth/domain/entities/user.dart';
 
 import 'log_in_repository_test.mocks.dart';
 
-@GenerateMocks([ILogInProvider, ITokenProvider])
+@GenerateMocks([ILogInProvider, ITokenProvider, IUserProvider])
 void main() {
   final logInProvider = MockILogInProvider();
   final tokenProvider = MockITokenProvider();
+  final userProvider = MockIUserProvider();
+
   final useCase = LogInRepository(
     logInProvider: logInProvider,
     tokenProvider: tokenProvider,
+    userProvider: userProvider,
   );
 
   test('Deve retornar um usuário logado', () async {
