@@ -5,7 +5,7 @@ import 'package:todo_app/core/errors/errors.dart';
 import 'package:todo_app/modules/categories/domain/entities/category.dart';
 import 'package:todo_app/modules/categories/domain/use_cases/get_all_categories.dart';
 
-import 'create_category_test.mocks.dart';
+import '../../../../core/mocks/all_generated_mocks.mocks.dart';
 
 void main() {
   final repo = MockICategoryRepository();

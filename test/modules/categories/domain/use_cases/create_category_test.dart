@@ -1,17 +1,13 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:todo_app/core/errors/errors.dart';
 import 'package:todo_app/modules/categories/domain/dtos/create_category_dto.dart';
 import 'package:todo_app/modules/categories/domain/entities/category.dart';
 import 'package:todo_app/modules/categories/domain/errors/erros.dart';
-import 'package:todo_app/modules/categories/domain/interfaces/i_category_repository.dart';
 import 'package:todo_app/modules/categories/domain/use_cases/create_category.dart';
 
-import 'create_category_test.mocks.dart';
-
-@GenerateMocks([ICategoryRepository])
+import '../../../../core/mocks/all_generated_mocks.mocks.dart';
 void main() {
   final repo = MockICategoryRepository();
   final usecase = CreateCategory(repo: repo);

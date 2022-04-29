@@ -1,18 +1,14 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:todo_app/core/errors/errors.dart';
 import 'package:todo_app/core/utils/constants.dart';
 import 'package:todo_app/modules/auth/domain/dtos/create_user_dto.dart';
 import 'package:todo_app/modules/auth/domain/entities/user.dart';
 import 'package:todo_app/modules/auth/domain/errors/errors.dart';
-import 'package:todo_app/modules/auth/domain/interfaces/i_sign_up_repository.dart';
 import 'package:todo_app/modules/auth/domain/use_cases/sign_up_with_email.dart';
 
-import 'sign_up_with_email_test.mocks.dart';
-
-@GenerateMocks([ISignUpRepository])
+import '../../../../core/mocks/all_generated_mocks.mocks.dart';
 void main() {
   final repo = MockISignUpRepository();
   final usecase = SignUpWithEmail(repo: repo);

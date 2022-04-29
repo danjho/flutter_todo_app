@@ -1,13 +1,10 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:todo_app/modules/auth/domain/dtos/log_in_dto.dart';
 import 'package:todo_app/modules/auth/providers/api_log_in_provider.dart';
 
-import 'api_log_in_provider_test.mocks.dart';
-
-@GenerateMocks([Dio])
+import '../../../core/mocks/all_generated_mocks.mocks.dart';
 void main() {
   final dio = MockDio();
   final apiLogInProvider = ApiLogInProvider(dio: dio);

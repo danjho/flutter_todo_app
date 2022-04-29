@@ -1,14 +1,11 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:todo_app/modules/categories/domain/dtos/create_category_dto.dart';
 import 'package:todo_app/modules/categories/domain/entities/category.dart';
 import 'package:todo_app/modules/categories/providers/api_category_provider.dart';
 
-import 'api_category_provider_test.mocks.dart';
-
-@GenerateMocks([Dio])
+import '../../../core/mocks/all_generated_mocks.mocks.dart';
 void main() {
   final dio = MockDio();
   final apiCategoryProvider = ApiCategoryProvider(dio);

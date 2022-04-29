@@ -1,17 +1,13 @@
 import 'package:dartz/dartz.dart' as d;
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:todo_app/core/errors/errors.dart';
 import 'package:todo_app/modules/tasks/domain/dtos/create_task_dto.dart';
 import 'package:todo_app/modules/tasks/domain/entities/task.dart';
 import 'package:todo_app/modules/tasks/domain/errors/errors.dart';
-import 'package:todo_app/modules/tasks/domain/interfaces/i_task_repository.dart';
 import 'package:todo_app/modules/tasks/domain/use_cases/create_task.dart';
 
-import 'create_task_test.mocks.dart';
-
-@GenerateMocks([ITaskRepository])
+import '../../../../core/mocks/all_generated_mocks.mocks.dart';
 void main() {
   final repo = MockITaskRepository();
   final usecase = CreateTask(repo: repo);

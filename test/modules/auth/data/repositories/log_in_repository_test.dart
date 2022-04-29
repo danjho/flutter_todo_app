@@ -1,18 +1,13 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:todo_app/core/errors/errors.dart';
-import 'package:todo_app/modules/auth/data/interfaces/i_log_in_provider.dart';
-import 'package:todo_app/modules/auth/data/interfaces/i_token_provider.dart';
-import 'package:todo_app/modules/auth/data/interfaces/i_user_provider.dart';
 import 'package:todo_app/modules/auth/data/repositories/log_in_repository.dart';
 import 'package:todo_app/modules/auth/domain/dtos/log_in_dto.dart';
 import 'package:todo_app/modules/auth/domain/entities/user.dart';
 
-import 'log_in_repository_test.mocks.dart';
+import '../../../../core/mocks/all_generated_mocks.mocks.dart';
 
-@GenerateMocks([ILogInProvider, ITokenProvider, IUserProvider])
 void main() {
   final logInProvider = MockILogInProvider();
   final tokenProvider = MockITokenProvider();

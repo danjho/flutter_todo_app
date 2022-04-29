@@ -1,11 +1,13 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
+
 import 'package:todo_app/modules/tasks/domain/dtos/create_task_dto.dart';
 import 'package:todo_app/modules/tasks/domain/entities/task.dart';
 import 'package:todo_app/modules/tasks/providers/api_task_provider.dart';
 
-import '../../categories/providers/api_category_provider_test.mocks.dart';
+import '../../../core/mocks/all_generated_mocks.mocks.dart';
+
 
 void main() {
   final dio = MockDio();
