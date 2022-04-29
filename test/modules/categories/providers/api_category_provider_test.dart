@@ -18,7 +18,13 @@ void main() {
     when(dio.post(any, data: anyNamed('data'))).thenAnswer((_) async {
       return Response(
         requestOptions: RequestOptions(path: 'any_path'),
-        data: {'id': 'uuid', 'name': 'name', 'color': '#AABBCC', 'tasks': []},
+        data: {
+          'id': 'uuid',
+          'name': 'name',
+          'color': '#AABBCC',
+          'totalTasks': 0,
+          'totalDoneTasks': 0,
+        },
       );
     });
     final category = await apiCategoryProvider.create(dto);

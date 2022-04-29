@@ -12,7 +12,8 @@ void main() {
   final apiTaskProvider = ApiTaskProvider(dio: dio);
 
   test('Deve retornar uma lista de Task', () async {
-    when(dio.get(any)).thenAnswer((_) async {
+    when(dio.get(any, queryParameters: anyNamed('queryParameters')))
+        .thenAnswer((_) async {
       return Response(
         requestOptions: RequestOptions(path: 'any_path'),
         data: [],
@@ -24,7 +25,8 @@ void main() {
   });
 
   test('Deve retornar Exception se houver falha', () async {
-    when(dio.get(any)).thenThrow(Exception());
+    when(dio.get(any, queryParameters: anyNamed('queryParameters')))
+        .thenThrow(Exception());
     final future = apiTaskProvider.getAll();
     expect(future, throwsException);
   });

@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:todo_app/core/utils/constants.dart';
 import 'package:todo_app/modules/tasks/presenter/home/local_widgets/category_card.dart';
 import 'package:todo_app/modules/tasks/presenter/home/home_controller.dart';
+import 'package:todo_app/modules/tasks/presenter/home/local_widgets/task_card.dart';
 import 'package:todo_app/themes/app_colors.dart';
 
 class HomePage extends GetView<HomeController> {
@@ -24,6 +25,10 @@ class HomePage extends GetView<HomeController> {
 
         return _buildBody(context, controller);
       }),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.add),
+        onPressed: () {},
+      ),
     );
   }
 
@@ -42,6 +47,8 @@ class HomePage extends GetView<HomeController> {
             children: [
               _buildWelcomeText(controller),
               _buildCategoryListPanel(context),
+              const SizedBox(height: DEFAULT_PADDING * 2),
+              _buildTaskListPanel(context),
             ],
           ),
         ],
@@ -89,6 +96,34 @@ class HomePage extends GetView<HomeController> {
             padding: EdgeInsets.symmetric(horizontal: DEFAULT_PADDING),
             children: controller.categories.map((c) {
               return CategoryCard(category: c);
+            }).toList(),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildTaskListPanel(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
+          child: Text(
+            "TODAY'S TASKS",
+            style: Theme.of(context).textTheme.caption?.copyWith(
+                  color: Colors.grey[400],
+                  fontSize: 14,
+                  fontWeight: FontWeight.w600,
+                ),
+          ),
+        ),
+        const SizedBox(height: DEFAULT_PADDING),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: DEFAULT_PADDING),
+          child: Column(
+            children: controller.tasks.map((t) {
+              return TaskCard(task: t);
             }).toList(),
           ),
         ),

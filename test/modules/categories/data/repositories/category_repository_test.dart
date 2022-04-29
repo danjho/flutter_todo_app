@@ -22,7 +22,13 @@ void main() {
   });
   test('Deve criar uma categoria', () async {
     when(categoryProvider.create(any)).thenAnswer((_) async {
-      return Category(id: 'uuid', name: 'name', color: '#AABBCC', tasks: []);
+      return Category(
+        id: 'uuid',
+        name: 'name',
+        color: '#AABBCC',
+        totalDoneTasks: 0,
+        totalTasks: 0,
+      );
     });
     final result = await repo.create(dto);
     final fold = result.fold(id, id);
