@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:todo_app/core/utils/constants.dart';
-import 'package:todo_app/modules/auth/presenter/log_in/local_widgets/category_card.dart';
+import 'package:todo_app/modules/tasks/presenter/home/local_widgets/category_card.dart';
 import 'package:todo_app/modules/tasks/presenter/home/home_controller.dart';
 import 'package:todo_app/themes/app_colors.dart';
 
@@ -41,7 +41,7 @@ class HomePage extends GetView<HomeController> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               _buildWelcomeText(controller),
-              _buildCategoryListPanel(context, controller),
+              _buildCategoryListPanel(context),
             ],
           ),
         ],
@@ -66,10 +66,7 @@ class HomePage extends GetView<HomeController> {
     );
   }
 
-  Widget _buildCategoryListPanel(
-    BuildContext context,
-    HomeController controller,
-  ) {
+  Widget _buildCategoryListPanel(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
@@ -78,8 +75,9 @@ class HomePage extends GetView<HomeController> {
           child: Text(
             'CATEGORIES',
             style: Theme.of(context).textTheme.caption?.copyWith(
-                  color: Colors.grey,
+                  color: Colors.grey[400],
                   fontSize: 14,
+                  fontWeight: FontWeight.w600,
                 ),
           ),
         ),
@@ -89,7 +87,7 @@ class HomePage extends GetView<HomeController> {
           child: ListView(
             scrollDirection: Axis.horizontal,
             padding: EdgeInsets.symmetric(horizontal: DEFAULT_PADDING),
-            children: controller.noEmptyCategories.map((c) {
+            children: controller.categories.map((c) {
               return CategoryCard(category: c);
             }).toList(),
           ),

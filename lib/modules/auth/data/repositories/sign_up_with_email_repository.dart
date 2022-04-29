@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:get/get.dart';
@@ -31,7 +33,7 @@ class SignUpWithEmailRepository extends ISignUpRepository {
       AppGlobals.user = loggedUser;
 
       tokenProvider.setToken(loggedUser.token);
-      userProvider.setUser(loggedUser.toJson().toString());
+      userProvider.setUser(json.encode(loggedUser.toJson()));
       Get.find<Dio>().updateInterceptors(loggedUser.token);
 
       return Right(loggedUser);

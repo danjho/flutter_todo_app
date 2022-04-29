@@ -1,32 +1,32 @@
-import 'package:todo_app/modules/tasks/domain/entities/task.dart';
-
 class Category {
   Category({
     this.id = '',
     this.name = '',
     this.color = '',
-    this.tasks = const [],
+    this.totalTasks = 0,
+    this.totalDoneTasks = 0,
   });
 
   factory Category.fromJson(Map<String, dynamic> json) => Category(
         id: json['id'],
         name: json['name'],
         color: json['color'],
-        tasks: List<Task>.from(
-          (json['tasks'] as List).map((x) => Task.fromJson(x)),
-        ),
+        totalTasks: json['totalTasks'],
+        totalDoneTasks: json['totalDoneTasks'],
       );
 
   String id;
   String name;
   String color;
-  List<Task> tasks;
+  int totalTasks;
+  int totalDoneTasks;
 
   Map<String, dynamic> toJson() => {
         'id': id,
         'name': name,
         'color': color,
-        'tasks': List<dynamic>.from(tasks.map((x) => x.toJson())),
+        'totalTasks': totalTasks,
+        'totalDoneTasks': totalDoneTasks,
       };
 
   static List<Category> fromList(List list) {

@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:get/get.dart';
@@ -31,7 +33,7 @@ class LogInRepository extends ILogInRepository {
       AppGlobals.user = user;
 
       tokenProvider.setToken(user.token);
-      userProvider.setUser(user.toJson().toString());
+      userProvider.setUser(json.encode(user.toJson()));
       Get.find<Dio>().updateInterceptors(user.token);
 
       return Right(user);

@@ -26,32 +26,19 @@ class HomeController extends GetxController {
 
   HomeState get state => _state();
 
-  List<Category> get noEmptyCategories =>
-      categories.where((element) => element.tasks.isNotEmpty).toList();
-
   @override
   Future<void> onReady() async {
     final getAllCategories = GetAllCategories(repo: categoryRepo);
     final catResult = await getAllCategories();
+    
     if (catResult.isRight()) {
       categories = catResult.fold((l) => [], (r) => r);
-      categories.sort((a, b) => b.tasks.length.compareTo(a.tasks.length));
-      await Future.delayed(Duration(seconds: 1));
+      categories.sort((a, b) => b.totalTasks.compareTo(a.totalTasks));
       _state(HomeState.done);
     } else {
-      print('error');
       _state(HomeState.error);
     }
 
-    // final getTasks = GetAllTasks(repo);
-    // final result = await getTasks();
-    // if (result.isRight()) {
-    //   tasks = result.fold((l) => [], (r) => r);
-    //   await Future.delayed(Duration(seconds: 2));
-    //   _state(HomeState.done);
-    // } else {
-    //   _state(HomeState.error);
-    // }
     super.onReady();
   }
 }

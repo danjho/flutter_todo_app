@@ -11,7 +11,10 @@ class ApiTaskProvider extends ITaskProvider {
 
   @override
   Future<List<Task>> getAll() async {
-    final res = await dio.get(EndPoint.tasks);
+    final res = await dio.get(
+      EndPoint.tasks,
+      queryParameters: {'join': 'category'},
+    );
     return Task.fromList(res.data);
   }
 

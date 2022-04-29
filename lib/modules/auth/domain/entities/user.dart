@@ -7,13 +7,15 @@ class User {
     this.token = '',
   });
 
-  factory User.fromJson(Map<String, dynamic> json) => User(
-        id: json['id'] ?? '',
-        name: json['name'] ?? '' ?? '',
-        email: json['email'] ?? '',
-        imageUrl: json['imageUrl'] ?? '',
-        token: json['token'] ?? '',
-      );
+  factory User.fromJson(Map<String, dynamic> json) {
+    return User(
+      id: json['id'] ?? '',
+      name: json['name'] ?? '' ?? '',
+      email: json['email'] ?? '',
+      imageUrl: json['imageUrl'] ?? '',
+      token: json['token'] ?? '',
+    );
+  }
 
   String id;
   String name;

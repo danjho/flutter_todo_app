@@ -18,8 +18,11 @@ class CategoryCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final totalTasks = category.tasks.length;
-    final doneTasks = category.tasks.where((e) => e.done).length;
+    final totalTasks = category.totalTasks;
+    final doneTasks = category.totalDoneTasks;
+    final isNaN = totalTasks == 0 && doneTasks == 0;
+    double percent = isNaN ? 0 : doneTasks / totalTasks;
+    
     return Card(
       margin: EdgeInsets.all(DEFAULT_PADDING / 2),
       shape: RoundedRectangleBorder(
@@ -37,7 +40,7 @@ class CategoryCard extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              '${category.tasks.length} tasks',
+              '$totalTasks tasks',
               style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                     color: Colors.grey,
                   ),
@@ -52,7 +55,7 @@ class CategoryCard extends StatelessWidget {
             ),
             LinearPercentIndicator(
               lineHeight: 4,
-              percent: doneTasks / totalTasks,
+              percent: percent,
               progressColor: HexColor(category.color),
               backgroundColor: Colors.grey[300],
               padding: EdgeInsets.zero,
