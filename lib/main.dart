@@ -4,11 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get.dart';
+import 'package:todo_app/app/domain/entities/user.dart';
+import 'package:todo_app/app/provider/auth/sp_token_provider.dart';
+import 'package:todo_app/app/provider/auth/sp_user_provider.dart';
 import 'package:todo_app/app_binding.dart';
 import 'package:todo_app/app_globals.dart';
-import 'package:todo_app/modules/auth/domain/entities/user.dart';
-import 'package:todo_app/modules/auth/providers/sp_token_provider.dart';
-import 'package:todo_app/modules/auth/providers/sp_user_provider.dart';
 import 'package:todo_app/routes/app_pages.dart';
 import 'package:todo_app/routes/app_routes.dart';
 import 'package:todo_app/themes/app_theme.dart';
@@ -30,7 +30,7 @@ Future<void> main() async {
     title: 'Flutter ToDo App',
     debugShowCheckedModeBanner: false,
     theme: AppTheme.light,
-    initialRoute: isLoggedIn ? AppRoutes.home : AppRoutes.logIn,
+    initialRoute: isLoggedIn ? AppRoutes.home : AppRoutes.signIn,
     initialBinding: AppBinding(),
     getPages: AppPages.pages,
     locale: const Locale('pt', 'BR'),

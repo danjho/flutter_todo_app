@@ -1,4 +1,4 @@
-import 'package:todo_app/modules/auth/domain/entities/user.dart';
+import 'package:todo_app/app/domain/entities/user.dart';
 
 class AppGlobals {
   AppGlobals._();
