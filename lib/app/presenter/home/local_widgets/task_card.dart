@@ -31,13 +31,15 @@ class TaskCard extends StatelessWidget {
           children: [
             TaskCheckBox(value: task.done),
             const SizedBox(width: DEFAULT_PADDING),
-            Text(
-              task.title,
-              style: Get.textTheme.bodyMedium?.copyWith(
-                color: Colors.black,
-                decoration: (task.done)
-                    ? TextDecoration.lineThrough
-                    : TextDecoration.none,
+            Expanded(
+              child: Text(
+                task.title,
+                style: Get.textTheme.bodyMedium?.copyWith(
+                  color: Colors.black,
+                  decoration: (task.done)
+                      ? TextDecoration.lineThrough
+                      : TextDecoration.none,
+                ),
               ),
             ),
           ],
