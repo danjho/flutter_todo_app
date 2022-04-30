@@ -5,6 +5,12 @@ class CreateTaskDto {
     required this.category,
   });
 
+  factory CreateTaskDto.empty() => CreateTaskDto(
+        title: '',
+        date: DateTime.now(),
+        category: '',
+      );
+
   String title;
   DateTime date;
   String category;
@@ -12,7 +18,7 @@ class CreateTaskDto {
   Map<String, dynamic> toJson() {
     return {
       'title': title,
-      'date': date.millisecondsSinceEpoch,
+      'date': date.toIso8601String(),
       'category': category,
     };
   }

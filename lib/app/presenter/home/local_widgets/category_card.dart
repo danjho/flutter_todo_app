@@ -56,7 +56,7 @@ class CategoryCard extends StatelessWidget {
             LinearPercentIndicator(
               lineHeight: 4,
               percent: percent,
-              progressColor: HexColor(category.color),
+              progressColor: category.color,
               backgroundColor: Colors.grey[300],
               padding: EdgeInsets.zero,
               barRadius: Radius.circular(radius),

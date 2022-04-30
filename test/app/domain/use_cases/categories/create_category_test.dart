@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:todo_app/app/domain/dtos/categories/create_category_dto.dart';
@@ -44,7 +45,7 @@ void main() {
       return Right(Category(
         id: 'uuid',
         name: 'name',
-        color: '#FFFFFF',
+        color: Colors.grey,
         totalDoneTasks: 0,
         totalTasks: 0,
       ));

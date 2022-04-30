@@ -8,6 +8,7 @@ import 'package:todo_app/app/domain/entities/user.dart';
 import 'package:todo_app/app/domain/use_cases/categories/get_all_categories.dart';
 import 'package:todo_app/app/domain/use_cases/tasks/get_all_tasks.dart';
 import 'package:todo_app/app_globals.dart';
+import 'package:todo_app/routes/app_routes.dart';
 
 enum HomeState {
   requesting,
@@ -30,8 +31,14 @@ class HomeController extends GetxController {
   HomeState get state => _state();
 
   @override
-  Future<void> onReady() async {
+  void onReady() {
     super.onReady();
+
+    _fetchAll();
+  }
+
+  Future<void> _fetchAll() async {
+    _state(HomeState.requesting);
 
     final getAllCategories = GetAllCategories(repo: categoryRepo);
     final catResult = await getAllCategories();
@@ -55,5 +62,10 @@ class HomeController extends GetxController {
     }
 
     _state(HomeState.done);
+  }
+
+  Future<void> newTask() async {
+    await Get.toNamed(AppRoutes.taskCrud);
+    _fetchAll();
   }
 }

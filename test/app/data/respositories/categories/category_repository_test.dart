@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:todo_app/app/data/repositories/categories/category_repository.dart';
@@ -22,7 +23,7 @@ void main() {
       return Category(
         id: 'uuid',
         name: 'name',
-        color: '#AABBCC',
+        color: Colors.grey,
         totalDoneTasks: 0,
         totalTasks: 0,
       );

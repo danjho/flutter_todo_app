@@ -35,7 +35,9 @@ class CreateTask extends UseCase<Task, CreateTaskDto> {
       }
     }
 
-    if (dto.date.isBefore(DateTime.now())) {
+    final now = DateTime.now();
+    final today = DateTime(now.year, now.month, now.day);
+    if (dto.date.isBefore(today)) {
       throw TaskInputError(message: 'Data inválida');
     }
   }

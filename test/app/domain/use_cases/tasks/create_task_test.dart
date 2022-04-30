@@ -65,7 +65,7 @@ void main() {
   test('Deve retornar TaskInputError se a data for antes da atual', () async {
     when(repo.create(any)).thenAnswer((_) async => d.Right(Task()));
 
-    dto.date = DateTime.now().subtract(Duration(seconds: 1));
+    dto.date = DateTime.now().subtract(Duration(days: 1));
     final result = await usecase(dto);
     expect(result.fold(d.id, d.id), isA<TaskInputError>());
   });

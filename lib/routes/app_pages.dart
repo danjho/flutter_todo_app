@@ -5,6 +5,8 @@ import 'package:todo_app/app/presenter/auth/sign_up/sign_up_binding.dart';
 import 'package:todo_app/app/presenter/auth/sign_up/sign_up_page.dart';
 import 'package:todo_app/app/presenter/home/home_binding.dart';
 import 'package:todo_app/app/presenter/home/home_page.dart';
+import 'package:todo_app/app/presenter/tasks/crud/task_crud_binding.dart';
+import 'package:todo_app/app/presenter/tasks/crud/task_crud_page.dart';
 import 'package:todo_app/routes/app_routes.dart';
 
 class AppPages {
@@ -25,6 +27,11 @@ class AppPages {
       name: AppRoutes.signUp,
       page: () => const SignUpPage(),
       binding: SignUpBinding(),
+    ),
+    GetPage(
+      name: AppRoutes.taskCrud,
+      page: () => const TaskCrudPage(),
+      binding: TaskCrudBinding(),
     ),
   ];
 }

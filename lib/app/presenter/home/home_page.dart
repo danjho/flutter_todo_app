@@ -27,7 +27,7 @@ class HomePage extends GetView<HomeController> {
       }),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
-        onPressed: () {},
+        onPressed: controller.newTask,
       ),
     );
   }
@@ -48,6 +48,7 @@ class HomePage extends GetView<HomeController> {
               _buildWelcomeText(controller),
               _buildCategoryListPanel(context),
               const SizedBox(height: DEFAULT_PADDING * 2),
+            
               _buildTaskListPanel(context),
             ],
           ),
