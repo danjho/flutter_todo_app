@@ -4,6 +4,7 @@ import 'package:todo_app/app/presenter/home/home_controller.dart';
 import 'package:todo_app/app/presenter/home/local_widgets/category_card.dart';
 import 'package:todo_app/app/presenter/home/local_widgets/task_card.dart';
 import 'package:todo_app/core/utils/constants.dart';
+import 'package:todo_app/routes/app_routes.dart';
 import 'package:todo_app/themes/app_colors.dart';
 
 class HomePage extends GetView<HomeController> {
@@ -40,7 +41,11 @@ class HomePage extends GetView<HomeController> {
           AppBar(
             backgroundColor: Colors.transparent,
             elevation: 0,
-            leading: Icon(Icons.menu, color: Colors.grey),
+            leading: InkWell(
+                onTap: () {
+                  Get.toNamed(AppRoutes.categoryManagement);
+                },
+                child: Icon(Icons.menu, color: Colors.grey)),
           ),
           Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -48,7 +53,6 @@ class HomePage extends GetView<HomeController> {
               _buildWelcomeText(controller),
               _buildCategoryListPanel(context),
               const SizedBox(height: DEFAULT_PADDING * 2),
-            
               _buildTaskListPanel(context),
             ],
           ),
