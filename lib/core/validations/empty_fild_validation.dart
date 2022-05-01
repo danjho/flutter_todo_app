@@ -3,7 +3,7 @@ class EmptyFildValidation {
 
   static String? validate(String fieldName, String? value) {
     if (value == null || value.trim().isEmpty) {
-      return '$fieldName não pode ser vazio';
+      return "$fieldName can't be empty";
     }
 
     return null;

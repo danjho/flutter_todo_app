@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:todo_app/app/domain/dtos/categories/create_category_dto.dart';
@@ -10,7 +11,7 @@ import '../../../core/mocks/generated_mocks.mocks.dart';
 void main() {
   final dio = MockDio();
   final apiCategoryProvider = ApiCategoryProvider(dio);
-  final dto = CreateCategoryDto(name: 'Name', color: '#FFFFFF');
+  final dto = CreateCategoryDto(name: 'Name', color: Colors.grey);
 
   test('Deve retornar uma categoria criada', () async {
     when(dio.post(any, data: anyNamed('data'))).thenAnswer((_) async {

@@ -79,7 +79,6 @@ class TaskCrudPage extends GetView<TaskCrudController> {
       maxLines: 2,
       initialValue: controller.dto.title,
       onChanged: (v) => controller.dto.title = v,
-      textAlign: TextAlign.center,
       decoration: InputDecoration(
         labelStyle: Theme.of(context).textTheme.titleLarge,
         hintStyle: Theme.of(context)
@@ -134,12 +133,19 @@ class TaskCrudPage extends GetView<TaskCrudController> {
             context: context,
             position: Position.getWidgetPosition(key),
             items: [
-              PopupMenuItem(child: Text('Sem categoria')),
+              PopupMenuItem(child: Text('No category')),
               ...controller.categories.map((e) {
-                return PopupMenuItem<Category>(
-                  value: e,
-                  child: Text(e.name));
+                return PopupMenuItem<Category>(value: e, child: Text(e.name));
               }).toList(),
+              PopupMenuItem(
+                onTap: () {
+                  
+                },
+                child: TextButton(
+                  child: Text('New category'),
+                  onPressed: () => controller.newCategory(context),
+                ),
+              )
             ]);
         if (selectedCategory != null) {
           controller.selectedCategory = selectedCategory;

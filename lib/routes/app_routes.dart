@@ -6,4 +6,5 @@ class AppRoutes {
   static const String signUp = '/auth/signup';
   static const String taskCrud = '/task/crud';
   static const String categoryManagement = '/category/management';
+  static const String categoryCrud = '/category/crud';
 }

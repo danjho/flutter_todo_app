@@ -9,6 +9,8 @@ class CategoryManagementBinding implements Bindings {
   void dependencies() {
     final categoryProvider = ApiCategoryProvider(Get.find<Dio>());
     final categoryRepo = CategoryRepository(categoryProvider: categoryProvider);
-    Get.lazyPut(() => CategoryManagementController(categoryRepo));
+    Get
+      ..lazyPut(() => categoryRepo)
+      ..lazyPut(() => CategoryManagementController(categoryRepo));
   }
 }

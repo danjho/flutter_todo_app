@@ -16,7 +16,7 @@ void main() {
   late CreateCategoryDto dto;
 
   setUp(() {
-    dto = CreateCategoryDto(name: 'Name', color: '#FFFFFF');
+    dto = CreateCategoryDto(name: 'Name', color: Colors.grey);
   });
   test('Deve criar uma categoria', () async {
     when(categoryProvider.create(any)).thenAnswer((_) async {

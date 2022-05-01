@@ -17,10 +17,7 @@ class ApiCategoryProvider extends ICategoryProvider {
 
   @override
   Future<List<Category>> getAll() async {
-    final res = await dio.get(
-      EndPoint.categories,
-      queryParameters: {'join': 'tasks'},
-    );
+    final res = await dio.get(EndPoint.categories);
     return Category.fromList(res.data);
   }
 }

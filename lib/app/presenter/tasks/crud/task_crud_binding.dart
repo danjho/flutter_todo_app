@@ -15,9 +15,11 @@ class TaskCrudBinding implements Bindings {
     final categoryProvider = ApiCategoryProvider(Get.find<Dio>());
     final categoryRepo = CategoryRepository(categoryProvider: categoryProvider);
 
-    Get.lazyPut(() => TaskCrudController(
-          taskRepo: taskRepo,
-          categoryRepo: categoryRepo,
-        ));
+    Get
+      ..lazyPut(() => categoryRepo)
+      ..lazyPut(() => TaskCrudController(
+            taskRepo: taskRepo,
+            categoryRepo: categoryRepo,
+          ));
   }
 }

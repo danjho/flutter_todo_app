@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:todo_app/app/domain/dtos/tasks/create_task_dto.dart';
 import 'package:todo_app/app/domain/entities/category.dart';
@@ -6,6 +7,7 @@ import 'package:todo_app/app/domain/interfaces/i_category_repository.dart';
 import 'package:todo_app/app/domain/interfaces/i_task_repository.dart';
 import 'package:todo_app/app/domain/use_cases/categories/get_all_categories.dart';
 import 'package:todo_app/app/domain/use_cases/tasks/create_task.dart';
+import 'package:todo_app/app/presenter/categories/crud/category_crud_dialog.dart';
 import 'package:todo_app/core/errors/errors.dart';
 
 class TaskCrudController extends GetxController {
@@ -88,4 +90,10 @@ class TaskCrudController extends GetxController {
   }
 
   void chooseDate() {}
+
+  Future<void> newCategory(BuildContext context) async {
+    Get.back();
+    await CategoryCrudDialog.show(context);
+    _fetchCategories();
+  }
 }

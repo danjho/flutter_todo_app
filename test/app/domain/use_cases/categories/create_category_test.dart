@@ -17,26 +17,12 @@ void main() {
   late CreateCategoryDto dto;
 
   setUp(() {
-    dto = CreateCategoryDto(name: 'Name', color: '#FFFFFF');
+    dto = CreateCategoryDto(name: 'Name', color: Colors.grey);
   });
 
   test('Retornar CategoryInputError se o nome for vazio', () async {
     dto.name = '';
     final result = await usecase(dto);
-    expect(result.fold(id, id), isA<CategoryInputError>());
-  });
-
-  test('Retornar CategoryInputError se a cor for inválida', () async {
-    dto.color = '';
-    var result = await usecase(dto);
-    expect(result.fold(id, id), isA<CategoryInputError>());
-
-    dto.color = 'FFFFFF';
-    result = await usecase(dto);
-    expect(result.fold(id, id), isA<CategoryInputError>());
-
-    dto.color = '#FFFFFZ';
-    result = await usecase(dto);
     expect(result.fold(id, id), isA<CategoryInputError>());
   });
 

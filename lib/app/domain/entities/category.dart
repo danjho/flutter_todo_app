@@ -14,8 +14,8 @@ class Category {
         id: json['id'],
         name: json['name'],
         color: ColorExt.fromHex(json['color']),
-        totalTasks: json['totalTasks'],
-        totalDoneTasks: json['totalDoneTasks'],
+        totalTasks: json['totalTasks'] ?? 0,
+        totalDoneTasks: json['totalDoneTasks'] ?? 0,
       );
 
   String id;

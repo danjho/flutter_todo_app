@@ -67,7 +67,7 @@ class CategoryManagementPage extends GetView<CategoryManagementController> {
                           );
                         }).toList(),
                         TextButton(
-                          onPressed: () {},
+                          onPressed: () => controller.newCategory(context),
                           child: Text('Add new category'),
                         ),
                       ],
