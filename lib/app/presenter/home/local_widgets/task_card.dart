@@ -29,7 +29,7 @@ class TaskCard extends StatelessWidget {
         onTap: () => onTap?.call(task),
         child: Row(
           children: [
-            TaskCheckBox(value: task.done),
+            TaskCheckBox(value: task.done, color: task.color,),
             const SizedBox(width: DEFAULT_PADDING),
             Expanded(
               child: Text(

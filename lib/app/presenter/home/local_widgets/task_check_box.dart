@@ -4,13 +4,13 @@ class TaskCheckBox extends StatelessWidget {
   const TaskCheckBox({
     required this.value,
     this.size = 24,
-    this.color = Colors.red,
+    this.color,
     Key? key,
   }) : super(key: key);
 
   final bool value;
   final double size;
-  final Color color;
+  final Color? color;
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +19,12 @@ class TaskCheckBox extends StatelessWidget {
       height: size,
       decoration: BoxDecoration(
         shape: BoxShape.circle,
-        border: value ? null : Border.all(color: color, width: 2),
+        border: value
+            ? null
+            : Border.all(
+                color: color ?? Colors.red,
+                width: 2,
+              ),
         color: value ? Color(0xFFd3dcf9) : Colors.transparent,
       ),
       child: value
