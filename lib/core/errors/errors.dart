@@ -4,6 +4,10 @@ abstract class Failure implements Exception {
   final String? message;
 }
 
+class UnexpectedError extends Failure {
+  UnexpectedError() : super(message: 'Erro inesperado');
+}
+
 class RepositoryError extends Failure {
   RepositoryError({String? message}) : super(message: message);
 }
