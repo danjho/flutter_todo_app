@@ -8,12 +8,12 @@ class CreateTaskDto {
   factory CreateTaskDto.empty() => CreateTaskDto(
         title: '',
         date: DateTime.now(),
-        category: '',
+        category: 0,
       );
 
   String title;
   DateTime date;
-  String category;
+  int category;
 
   Map<String, dynamic> toJson() {
     return {

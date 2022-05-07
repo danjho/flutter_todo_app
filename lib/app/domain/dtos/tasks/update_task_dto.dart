@@ -3,8 +3,8 @@ import 'package:todo_app/app/domain/entities/task.dart';
 
 class UpdateTaskDto extends Task {
   UpdateTaskDto({
-    required this.category,
-    String? id,
+    required int category,
+    int? id,
     String? title,
     bool? done,
     DateTime? date,
@@ -15,7 +15,6 @@ class UpdateTaskDto extends Task {
           date: date,
           done: done,
           title: title,
+          category: category,
         );
-
-  String category;
 }

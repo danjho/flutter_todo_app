@@ -3,7 +3,7 @@ import 'package:todo_app/core/extensions/color_ext.dart';
 
 class Category {
   Category({
-    this.id = '',
+    this.id = 0,
     this.name = '',
     this.color = Colors.grey,
     this.totalTasks = 0,
@@ -18,7 +18,7 @@ class Category {
         totalDoneTasks: json['totalDoneTasks'] ?? 0,
       );
 
-  String id;
+  int id;
   String name;
   Color color;
   int totalTasks;

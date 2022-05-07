@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:hexcolor/hexcolor.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 import 'package:todo_app/app/domain/entities/category.dart';
 import 'package:todo_app/app/domain/entities/task.dart';

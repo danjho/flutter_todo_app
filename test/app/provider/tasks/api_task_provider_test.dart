@@ -40,16 +40,14 @@ void main() {
       dto = CreateTaskDto(
         title: 'Any title',
         date: DateTime.now().add(Duration(days: 1)),
-        category: 'category-uuid',
+        category: 0,
       );
     });
 
     test('Deve criar uma Task e retornar o objeto criado', () async {
       when(dio.post(any, data: anyNamed('data'))).thenAnswer((_) async {
         return Response(
-          requestOptions: RequestOptions(path: 'any_path'),
-          data: {'id': 'uuid'},
-        );
+            requestOptions: RequestOptions(path: 'any_path'), data: {'id': 0});
       });
 
       final result = await apiTaskProvider.create(dto);
@@ -69,9 +67,9 @@ void main() {
     setUp(() {
       dto = UpdateTaskDto(
         title: 'Any title',
-        id: 'uuid',
+        id: 0,
         color: Colors.red,
-        category: 'category-uuid',
+        category: 0,
         date: DateTime.now(),
       );
     });
@@ -79,9 +77,7 @@ void main() {
     test('Deve editar uma Task e retornar o objeto editado', () async {
       when(dio.patch(any, data: anyNamed('data'))).thenAnswer((_) async {
         return Response(
-          requestOptions: RequestOptions(path: 'any_path'),
-          data: {'id': 'uuid'},
-        );
+            requestOptions: RequestOptions(path: 'any_path'), data: {'id': 0});
       });
 
       final result = await apiTaskProvider.update(dto);

@@ -48,7 +48,7 @@ void main() {
 
   test('Deve retornar um usuário logado', () async {
     when(repo.signInWithEmail(any)).thenAnswer((_) async {
-      return Right(User(id: 'id', email: email));
+      return Right(User(id: 0, email: email));
     });
 
     final result = await usecase(SignInDto(email: email, pwd: password));

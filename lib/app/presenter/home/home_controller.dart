@@ -2,12 +2,15 @@ import 'package:dartz/dartz.dart';
 import 'package:get/get.dart';
 import 'package:todo_app/app/data/repositories/categories/category_repository.dart';
 import 'package:todo_app/app/data/repositories/tasks/task_repository.dart';
+import 'package:todo_app/app/domain/dtos/tasks/update_task_dto.dart';
 import 'package:todo_app/app/domain/entities/category.dart';
 import 'package:todo_app/app/domain/entities/task.dart' as t;
 import 'package:todo_app/app/domain/entities/user.dart';
 import 'package:todo_app/app/domain/use_cases/categories/get_all_categories.dart';
 import 'package:todo_app/app/domain/use_cases/tasks/get_all_tasks.dart';
+import 'package:todo_app/app/domain/use_cases/tasks/update_task.dart';
 import 'package:todo_app/app_globals.dart';
+import 'package:todo_app/core/errors/errors.dart';
 import 'package:todo_app/routes/app_routes.dart';
 
 enum HomeState {
@@ -56,6 +59,7 @@ class HomeController extends GetxController {
 
     if (taskResult.isRight()) {
       tasks = taskResult.fold(id, id) as List<t.Task>;
+      tasks.sort((a, b) => a.done! ? 1 : 0);
     } else {
       _state(HomeState.error);
       return;
@@ -66,6 +70,29 @@ class HomeController extends GetxController {
 
   Future<void> newTask() async {
     await Get.toNamed(AppRoutes.taskCrud);
+    _fetchAll();
+  }
+
+  Future<void> updateTask(t.Task task) async {
+    final update = UpdateTask(taskRepo);
+    final result = await update(UpdateTaskDto(
+      category: task.category ?? 0,
+      color: task.color,
+      date: task.date,
+      done: task.done,
+      id: task.id,
+      title: task.title,
+    ));
+
+    if (result.isLeft()) {
+      final error = result.fold(id, id) as Failure;
+      Get.showSnackbar(GetSnackBar(
+        message: error.message ?? 'Unexpected error',
+        duration: Duration(seconds: 2),
+      ));
+      return;
+    }
+
     _fetchAll();
   }
 }

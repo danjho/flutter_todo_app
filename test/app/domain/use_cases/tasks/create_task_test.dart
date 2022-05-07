@@ -18,16 +18,15 @@ void main() {
     dto = CreateTaskDto(
       title: 'Any title',
       date: DateTime.now().add(Duration(days: 1)),
-      category: 'category-uuid',
+      category: 0,
     );
   });
 
   test('Deve criar uma Task e retornar o objeto criado', () async {
-    when(repo.create(any)).thenAnswer((_) async => d.Right(Task(id: 'uuid')));
+    when(repo.create(any)).thenAnswer((_) async => d.Right(Task(id: 0)));
 
     final result = await usecase(dto);
     expect(result.fold(d.id, d.id), isA<Task>());
-    expect((result.fold(d.id, d.id) as Task).id, isNotEmpty);
   });
 
   test('Deve retornar RepositoryErro em caso de falha no repositório',
@@ -50,14 +49,6 @@ void main() {
     when(repo.create(any)).thenAnswer((_) async => d.Right(Task()));
 
     dto.title = '';
-    final result = await usecase(dto);
-    expect(result.fold(d.id, d.id), isA<TaskInputError>());
-  });
-
-  test('Deve retornar TaskInputError se não tiver categoria', () async {
-    when(repo.create(any)).thenAnswer((_) async => d.Right(Task()));
-
-    dto.category = '';
     final result = await usecase(dto);
     expect(result.fold(d.id, d.id), isA<TaskInputError>());
   });

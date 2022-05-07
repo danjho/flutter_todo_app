@@ -128,7 +128,12 @@ class HomePage extends GetView<HomeController> {
           padding: const EdgeInsets.symmetric(horizontal: DEFAULT_PADDING),
           child: Column(
             children: controller.tasks.map((t) {
-              return TaskCard(task: t);
+              return TaskCard(
+                  task: t,
+                  onTap: (t) {
+                    t.done = !(t.done ?? true);
+                    controller.updateTask(t);
+                  });
             }).toList(),
           ),
         ),

@@ -8,30 +8,34 @@ class Task {
     this.done,
     this.date,
     this.color,
+    this.category,
   });
 
   factory Task.fromJson(Map<String, dynamic> json) {
     return Task(
-      id: json['id'] ?? '',
+      id: json['id'],
       title: json['title'] ?? '',
       done: json['done'] ?? false,
       date: DateTime.tryParse(json['date'] ?? ''),
       color: ColorExt.fromHex(json['color']),
+      category: json['category_id'],
     );
   }
 
-  String? id;
+  int? id;
   String? title;
   bool? done;
   DateTime? date;
   Color? color;
+  int? category;
 
   Map<String, dynamic> toJson() => {
-        'id': id,
+        // 'id': id,
         'title': title,
         'done': done,
         'date': date?.toIso8601String(),
-        'color': color?.toHexColor(),
+        // 'color': color?.toHexColor(),
+        'category': category,
       };
 
   static List<Task> fromList(List list) {

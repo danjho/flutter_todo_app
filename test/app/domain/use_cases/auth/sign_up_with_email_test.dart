@@ -47,7 +47,7 @@ void main() {
 
   test('Deve retornar um usuário logado', () async {
     when(repo.signUpWithEmail(any)).thenAnswer((_) async {
-      final user = User(id: 'id', email: 'validEmail', token: 'validToken');
+      final user = User(id: 0, email: 'validEmail', token: 'validToken');
       return Right(user);
     });
 

@@ -20,7 +20,7 @@ void main() {
   );
   test('Deve retornar um usuário logado', () async {
     when(signUpProvider.signUpWithEmail(any)).thenAnswer((_) async {
-      return User(id: 'id', email: 'valid@email.com', token: 'validToken');
+      return User(id: 0, email: 'valid@email.com', token: 'validToken');
     });
     final result = await repo.signUpWithEmail(
       SignUpDto(name: 'name', email: 'email', pwd: 'pwd'),

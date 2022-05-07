@@ -26,7 +26,6 @@ class CreateTask extends UseCase<Task, CreateTaskDto> {
   void _validateFields(CreateTaskDto dto) {
     final validations = [
       EmptyFildValidation.validate('Título', dto.title),
-      EmptyFildValidation.validate('Categoria', dto.category),
     ];
 
     for (final element in validations) {

@@ -1,6 +1,6 @@
 class User {
   User({
-    this.id = '',
+    this.id = 0,
     this.name = '',
     this.email = '',
     this.imageUrl = '',
@@ -17,7 +17,7 @@ class User {
     );
   }
 
-  String id;
+  int id;
   String name;
   String email;
   String imageUrl;

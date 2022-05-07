@@ -23,8 +23,11 @@ class ApiTaskProvider extends ITaskProvider {
   }
 
   @override
-  Future<Task> update(UpdateTaskDto dto) async{
-    final res = await dio.patch(EndPoint.tasks, data: dto.toJson());
+  Future<Task> update(UpdateTaskDto dto) async {
+    final endpoint = '${EndPoint.tasks}/${dto.id}';
+    dto.id = null;
+    print(endpoint);
+    final res = await dio.patch(endpoint, data: dto.toJson());
     return Task.fromJson(res.data);
   }
 }

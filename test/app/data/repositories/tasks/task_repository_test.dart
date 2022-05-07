@@ -34,16 +34,15 @@ void main() {
       dto = CreateTaskDto(
         title: 'Any title',
         date: DateTime.now(),
-        category: 'uuid',
+        category: 0,
       );
     });
     test('Deve criar uma Task e retornar o objeto criado', () async {
       when(taskProvider.create(any)).thenAnswer((_) async {
-        return e.Task(id: 'uuid');
+        return e.Task(id: 0);
       });
       final result = await repo.create(dto);
       expect(result.isRight(), true);
-      expect((result.fold(id, id) as e.Task).id, isNotEmpty);
     });
 
     test('Deve retornar Error em caso de falha', () async {
@@ -57,20 +56,20 @@ void main() {
     late UpdateTaskDto dto;
     setUp(() {
       dto = UpdateTaskDto(
-        id: 'id',
+        id: 0,
         title: 'Any title',
         color: Colors.amber,
         done: true,
-        category: 'categoryId',
+        category: 0,
       );
     });
     test('Deve criar uma Task e retornar o objeto criado', () async {
       when(taskProvider.update(any)).thenAnswer((_) async {
-        return e.Task(id: 'uuid');
+        return e.Task(id: 0);
       });
       final result = await repo.update(dto);
       expect(result.isRight(), true);
-      expect((result.fold(id, id) as e.Task).id, isNotEmpty);
+      expect((result.fold(id, id) as e.Task).id, 0);
     });
 
     test('Deve retornar Error em caso de falha', () async {

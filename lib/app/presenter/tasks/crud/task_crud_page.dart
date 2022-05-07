@@ -138,9 +138,7 @@ class TaskCrudPage extends GetView<TaskCrudController> {
                 return PopupMenuItem<Category>(value: e, child: Text(e.name));
               }).toList(),
               PopupMenuItem(
-                onTap: () {
-                  
-                },
+                onTap: () {},
                 child: TextButton(
                   child: Text('New category'),
                   onPressed: () => controller.newCategory(context),

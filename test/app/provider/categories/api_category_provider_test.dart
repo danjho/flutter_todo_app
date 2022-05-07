@@ -18,7 +18,7 @@ void main() {
       return Response(
         requestOptions: RequestOptions(path: 'any_path'),
         data: {
-          'id': 'uuid',
+          'id': 0,
           'name': 'name',
           'color': '#AABBCC',
           'totalTasks': 0,
@@ -27,7 +27,7 @@ void main() {
       );
     });
     final category = await apiCategoryProvider.create(dto);
-    expect(category.id, isNotEmpty);
+    expect(category.id, 0);
   });
 
   test('Deve retornar uma Exception se der erro no provider', () async {

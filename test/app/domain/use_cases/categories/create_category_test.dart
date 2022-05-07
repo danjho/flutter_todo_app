@@ -29,7 +29,7 @@ void main() {
   test('Deve retornar uma Categoria criada com sucesso', () async {
     when(repo.create(any)).thenAnswer((_) async {
       return Right(Category(
-        id: 'uuid',
+        id: 0,
         name: 'name',
         color: Colors.grey,
         totalDoneTasks: 0,
@@ -39,7 +39,6 @@ void main() {
 
     final result = await usecase(dto);
     expect(result.fold(id, id), isA<Category>());
-    expect((result.fold(id, id) as Category).id, isNotEmpty);
   });
 
   test('Deve retornar uma RepositoryError em caso de erro no repo', () async {

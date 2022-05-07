@@ -21,7 +21,7 @@ void main() {
   test('Deve criar uma categoria', () async {
     when(categoryProvider.create(any)).thenAnswer((_) async {
       return Category(
-        id: 'uuid',
+        id: 0,
         name: 'name',
         color: Colors.grey,
         totalDoneTasks: 0,
@@ -31,7 +31,6 @@ void main() {
     final result = await repo.create(dto);
     final fold = result.fold(id, id);
     expect(fold, isA<Category>());
-    expect((fold as Category).id, isNotEmpty);
   });
 
   test('Deve retornar um RepositoryError', () async {

@@ -16,16 +16,16 @@ void main() {
 
   setUp(() {
     dto = UpdateTaskDto(
-      id: 'id',
+      id: 0,
       title: 'Valid title',
       color: Colors.red,
       done: false,
-      category: 'categoryId',
+      category: 0,
     );
   });
 
   test('Deve atualizar a tarefa e retornar o objeto criado', () async {
-    when(repo.update(any)).thenAnswer((_) async => Right(t.Task(id: 'id')));
+    when(repo.update(any)).thenAnswer((_) async => Right(t.Task(id: 0)));
     final result = await usecase(dto);
     expect(result.fold(id, id), isA<t.Task>());
   });
