@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart' as d;
+import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:todo_app/app/domain/dtos/tasks/create_task_dto.dart';
@@ -13,6 +14,14 @@ void main() {
   final repo = MockITaskRepository();
   final usecase = CreateTask(repo: repo);
   late CreateTaskDto dto;
+  final taskRes = Task(
+    id: 0,
+    category: 1,
+    color: Colors.grey,
+    date: DateTime.now(),
+    done: false,
+    title: 'Title',
+  );
 
   setUp(() {
     dto = CreateTaskDto(
@@ -23,7 +32,7 @@ void main() {
   });
 
   test('Deve criar uma Task e retornar o objeto criado', () async {
-    when(repo.create(any)).thenAnswer((_) async => d.Right(Task(id: 0)));
+    when(repo.create(any)).thenAnswer((_) async => d.Right(taskRes));
 
     final result = await usecase(dto);
     expect(result.fold(d.id, d.id), isA<Task>());
@@ -38,7 +47,7 @@ void main() {
   });
 
   test('Deve retornar TaskInputError se não tiver título', () async {
-    when(repo.create(any)).thenAnswer((_) async => d.Right(Task()));
+    when(repo.create(any)).thenAnswer((_) async => d.Right(taskRes));
 
     dto.title = '';
     final result = await usecase(dto);
@@ -46,7 +55,7 @@ void main() {
   });
 
   test('Deve retornar TaskInputError se não tiver título', () async {
-    when(repo.create(any)).thenAnswer((_) async => d.Right(Task()));
+    when(repo.create(any)).thenAnswer((_) async => d.Right(taskRes));
 
     dto.title = '';
     final result = await usecase(dto);
@@ -54,7 +63,7 @@ void main() {
   });
 
   test('Deve retornar TaskInputError se a data for antes da atual', () async {
-    when(repo.create(any)).thenAnswer((_) async => d.Right(Task()));
+    when(repo.create(any)).thenAnswer((_) async => d.Right(taskRes));
 
     dto.date = DateTime.now().subtract(Duration(days: 1));
     final result = await usecase(dto);

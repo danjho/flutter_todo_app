@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:todo_app/app/data/interfaces/auth/i_sign_in_provider.dart';
-import 'package:todo_app/app/domain/entities/user.dart';
+import 'package:todo_app/app/data/models/user_model.dart';
 import 'package:todo_app/core/end_point.dart';
 
 class ApiSignInProvider implements ISignInProvider {
@@ -9,13 +9,14 @@ class ApiSignInProvider implements ISignInProvider {
   final Dio dio;
 
   @override
-  Future<User> signInWithEmail(dto) async {
+  Future<UserModel> signInWithEmail(dto) async {
     var res = await dio.post<Map<String, dynamic>>(
       EndPoint.signIn,
       data: dto.toMap(),
     );
-    // TODO: Melhorar isto aqui
-    res.data?['user']['token'] = res.data?['token'];
-    return User.fromJson(res.data?['user']);
+
+    Map<String, dynamic> json = res.data?['user'];
+    json['token'] = res.data?['token'];
+    return UserModel.fromJson(json);
   }
 }

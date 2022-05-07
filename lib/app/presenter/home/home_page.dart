@@ -131,7 +131,7 @@ class HomePage extends GetView<HomeController> {
               return TaskCard(
                   task: t,
                   onTap: (t) {
-                    t.done = !(t.done ?? true);
+                    t.done = !t.done;
                     controller.updateTask(t);
                   });
             }).toList(),

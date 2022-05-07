@@ -59,7 +59,7 @@ class HomeController extends GetxController {
 
     if (taskResult.isRight()) {
       tasks = taskResult.fold(id, id) as List<t.Task>;
-      tasks.sort((a, b) => a.done! ? 1 : 0);
+      tasks.sort((a, b) => a.done ? 1 : 0);
     } else {
       _state(HomeState.error);
       return;
@@ -77,7 +77,6 @@ class HomeController extends GetxController {
     final update = UpdateTask(taskRepo);
     final result = await update(UpdateTaskDto(
       category: task.category ?? 0,
-      color: task.color,
       date: task.date,
       done: task.done,
       id: task.id,

@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get.dart';
-import 'package:todo_app/app/domain/entities/user.dart';
+import 'package:todo_app/app/data/models/user_model.dart';
 import 'package:todo_app/app/provider/auth/sp_token_provider.dart';
 import 'package:todo_app/app/provider/auth/sp_user_provider.dart';
 import 'package:todo_app/app_binding.dart';
@@ -21,10 +21,10 @@ Future<void> main() async {
   AppGlobals.token = await SpTokenProvider().getToken() ?? '';
   final userJson = await SpUserProvider().getUser();
   if (userJson != null) {
-    AppGlobals.user = User.fromJson(json.decode(userJson));
+    AppGlobals.user = UserModel.fromJson(json.decode(userJson));
   }
 
-  final isLoggedIn = AppGlobals.token.isNotEmpty && AppGlobals.user != null;
+  final isLoggedIn = AppGlobals.token != null && AppGlobals.user != null;
 
   final app = GetMaterialApp(
     title: 'Flutter ToDo App',

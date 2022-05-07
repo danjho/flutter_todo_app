@@ -11,8 +11,14 @@ class SpTokenProvider extends ITokenProvider {
   }
 
   @override
-  Future<void> setToken(String token) async {
+  Future<void> setToken(String? token) async {
     final prefs = await SharedPreferences.getInstance();
+
+    if (token == null) {
+      prefs.remove(key);
+      return;
+    }
+    
     await prefs.setString(key, token);
   }
 }

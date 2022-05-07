@@ -13,19 +13,27 @@ void main() {
   final repo = MockITaskRepository();
   final usecase = UpdateTask(repo);
   late UpdateTaskDto dto;
+  final taskRes = t.Task(
+    id: 0,
+    category: 1,
+    color: Colors.grey,
+    date: DateTime.now(),
+    done: false,
+    title: 'Title',
+  );
 
   setUp(() {
     dto = UpdateTaskDto(
       id: 0,
       title: 'Valid title',
-      color: Colors.red,
       done: false,
       category: 0,
+      date: DateTime.now(),
     );
   });
 
   test('Deve atualizar a tarefa e retornar o objeto criado', () async {
-    when(repo.update(any)).thenAnswer((_) async => Right(t.Task(id: 0)));
+    when(repo.update(any)).thenAnswer((_) async => Right(taskRes));
     final result = await usecase(dto);
     expect(result.fold(id, id), isA<t.Task>());
   });

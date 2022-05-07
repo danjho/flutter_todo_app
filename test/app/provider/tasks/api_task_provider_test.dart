@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
+import 'package:todo_app/app/data/models/task_model.dart';
 import 'package:todo_app/app/domain/dtos/tasks/create_task_dto.dart';
 import 'package:todo_app/app/domain/dtos/tasks/update_task_dto.dart';
 import 'package:todo_app/app/domain/entities/task.dart';
@@ -47,7 +48,16 @@ void main() {
     test('Deve criar uma Task e retornar o objeto criado', () async {
       when(dio.post(any, data: anyNamed('data'))).thenAnswer((_) async {
         return Response(
-            requestOptions: RequestOptions(path: 'any_path'), data: {'id': 0});
+          requestOptions: RequestOptions(path: 'any_path'),
+          data: TaskModel(
+            color: Colors.grey,
+            done: false,
+            id: 1,
+            title: 'title',
+            category: 1,
+            date: DateTime.now(),
+          ).toJson(),
+        );
       });
 
       final result = await apiTaskProvider.create(dto);
@@ -68,16 +78,24 @@ void main() {
       dto = UpdateTaskDto(
         title: 'Any title',
         id: 0,
-        color: Colors.red,
         category: 0,
         date: DateTime.now(),
+        done: false,
       );
     });
 
     test('Deve editar uma Task e retornar o objeto editado', () async {
       when(dio.patch(any, data: anyNamed('data'))).thenAnswer((_) async {
         return Response(
-            requestOptions: RequestOptions(path: 'any_path'), data: {'id': 0});
+            requestOptions: RequestOptions(path: 'any_path'),
+            data: TaskModel(
+              color: Colors.grey,
+              done: false,
+              id: 1,
+              title: 'title',
+              category: 1,
+              date: DateTime.now(),
+            ).toJson());
       });
 
       final result = await apiTaskProvider.update(dto);

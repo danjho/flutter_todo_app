@@ -15,22 +15,21 @@ void main() {
     email: 'valid@email.com',
     pwd: '123mudar',
   );
+
   test('Deve retornar um usuário do provider', () async {
-    when(
-      dio.post(any, data: anyNamed('data')),
-    ).thenAnswer((_) async {
+    when(dio.post(any, data: anyNamed('data'))).thenAnswer((_) async {
       return Response<Map<String, dynamic>>(
         requestOptions: RequestOptions(path: 'any_path'),
         statusCode: 200,
         data: {
-          'user': {'id': 0, 'email': 'user@email.com'},
+          'user': {'id': 0, 'email': 'user@email.com', 'name': 'Valid Name'},
           'token': 'validToken',
         },
       );
     });
 
     final user = await apiSignUpProvider.signUpWithEmail(dto);
-    expect(user.token, isNotEmpty);
+    expect(user.token!, isNotEmpty);
   });
 
   test('Deve retornar providerError em caso de falha', () async {

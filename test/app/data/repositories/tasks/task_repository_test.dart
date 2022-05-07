@@ -39,7 +39,14 @@ void main() {
     });
     test('Deve criar uma Task e retornar o objeto criado', () async {
       when(taskProvider.create(any)).thenAnswer((_) async {
-        return e.Task(id: 0);
+        return e.Task(
+          id: 0,
+          category: 1,
+          color: Colors.grey,
+          date: DateTime.now(),
+          done: false,
+          title: 'Title',
+        );
       });
       final result = await repo.create(dto);
       expect(result.isRight(), true);
@@ -58,14 +65,21 @@ void main() {
       dto = UpdateTaskDto(
         id: 0,
         title: 'Any title',
-        color: Colors.amber,
         done: true,
         category: 0,
+        date: DateTime.now(),
       );
     });
     test('Deve criar uma Task e retornar o objeto criado', () async {
       when(taskProvider.update(any)).thenAnswer((_) async {
-        return e.Task(id: 0);
+        return e.Task(
+          id: 0,
+          category: 1,
+          color: Colors.grey,
+          date: DateTime.now(),
+          done: false,
+          title: 'Title',
+        );
       });
       final result = await repo.update(dto);
       expect(result.isRight(), true);

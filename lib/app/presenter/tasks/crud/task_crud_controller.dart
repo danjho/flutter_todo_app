@@ -20,6 +20,10 @@ class TaskCrudController extends GetxController {
   final Rx _$selectedDate = Rx<DateTime>(DateTime.now());
   final Rx<Category> _$selectedCategory = Rx<Category>(Category(
     name: 'No category',
+    color: Colors.grey,
+    id: 0,
+    totalDoneTasks: 0,
+    totalTasks: 0,
   ));
 
   List<Category> _categories = [];

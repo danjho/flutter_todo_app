@@ -1,6 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
+import 'package:todo_app/app/data/models/user_model.dart';
 import 'package:todo_app/app/data/repositories/auth/sign_in_repository.dart';
 import 'package:todo_app/app/domain/dtos/auth/sign_in_dto.dart';
 import 'package:todo_app/app/domain/entities/user.dart';
@@ -21,7 +22,7 @@ void main() {
 
   test('Deve retornar um usuário logado', () async {
     when(signInProvider.signInWithEmail(any)).thenAnswer((_) async {
-      return User(id: 0, email: 'email', token: 'token', name: 'name');
+      return UserModel(email: 'email', token: 'token', name: 'name');
     });
 
     final result = await useCase.signInWithEmail(
