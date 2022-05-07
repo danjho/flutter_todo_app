@@ -12,6 +12,7 @@ import 'package:todo_app/app_globals.dart';
 import 'package:todo_app/routes/app_pages.dart';
 import 'package:todo_app/routes/app_routes.dart';
 import 'package:todo_app/themes/app_theme.dart';
+import 'package:intl/date_symbol_data_local.dart';
 
 Future<void> main() async {
   await dotenv.load(fileName: '.env');
@@ -25,6 +26,8 @@ Future<void> main() async {
   }
 
   final isLoggedIn = AppGlobals.token != null && AppGlobals.user != null;
+
+  initializeDateFormatting();
 
   final app = GetMaterialApp(
     title: 'Flutter ToDo App',
