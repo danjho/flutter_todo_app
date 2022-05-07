@@ -23,8 +23,8 @@ class ApiTaskProvider extends ITaskProvider {
   }
 
   @override
-  Future<Task> update(UpdateTaskDto dto) {
-    // TODO: implement update
-    throw UnimplementedError();
+  Future<Task> update(UpdateTaskDto dto) async{
+    final res = await dio.patch(EndPoint.tasks, data: dto.toJson());
+    return Task.fromJson(res.data);
   }
 }

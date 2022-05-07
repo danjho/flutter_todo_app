@@ -3,9 +3,9 @@ import 'package:todo_app/core/extensions/color_ext.dart';
 
 class Task {
   Task({
-    this.id = '',
-    this.title = '',
-    this.done = false,
+    this.id,
+    this.title,
+    this.done,
     this.date,
     this.color,
   });
@@ -20,9 +20,9 @@ class Task {
     );
   }
 
-  String id;
-  String title;
-  bool done;
+  String? id;
+  String? title;
+  bool? done;
   DateTime? date;
   Color? color;
 
