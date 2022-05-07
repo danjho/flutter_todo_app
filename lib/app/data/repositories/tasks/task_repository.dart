@@ -32,8 +32,14 @@ class TaskRepository extends ITaskRepository {
   }
 
   @override
-  Future<d.Either<Failure, Task>> update(UpdateTaskDto dto) {
-    // TODO: implement update
-    throw UnimplementedError();
+  Future<d.Either<Failure, Task>> update(UpdateTaskDto dto) async {
+    try {
+      final task = await taskProvider.update(dto);
+      return d.Right(task);
+    } on DatasourceError catch (e) {
+      return d.Left(e);
+    } catch (e) {
+      return d.Left(UnexpectedError());
+    }
   }
 }

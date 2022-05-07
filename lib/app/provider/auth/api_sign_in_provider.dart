@@ -14,6 +14,7 @@ class ApiSignInProvider implements ISignInProvider {
       EndPoint.signIn,
       data: dto.toMap(),
     );
+    // TODO: Melhorar isto aqui
     res.data?['user']['token'] = res.data?['token'];
     return User.fromJson(res.data?['user']);
   }

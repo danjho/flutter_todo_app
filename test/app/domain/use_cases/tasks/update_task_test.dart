@@ -20,6 +20,7 @@ void main() {
       title: 'Valid title',
       color: Colors.red,
       done: false,
+      category: 'categoryId',
     );
   });
 
